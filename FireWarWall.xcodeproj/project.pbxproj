@@ -7,22 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61347F7B202B958900D9292B /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61347F7A202B958900D9292B /* FilesManager.swift */; };
 		61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D3D202B2A98007BA376 /* AppDelegate.swift */; };
 		61937D40202B2A98007BA376 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D3F202B2A98007BA376 /* ViewController.swift */; };
-		61937D43202B2A98007BA376 /* FireWarWall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61937D41202B2A98007BA376 /* FireWarWall.xcdatamodeld */; };
 		61937D45202B2A98007BA376 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61937D44202B2A98007BA376 /* Assets.xcassets */; };
 		61937D48202B2A98007BA376 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61937D46202B2A98007BA376 /* Main.storyboard */; };
+		61937D51202B50B4007BA376 /* FireWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D50202B50B4007BA376 /* FireWall.swift */; };
+		61937D53202B6164007BA376 /* IpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D52202B6164007BA376 /* IpsManager.swift */; };
+		61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ECD2031062600819FE1 /* FireWarWall.xcdatamodeld */; };
+		61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */; };
+		61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61347F7A202B958900D9292B /* FilesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		61937D3A202B2A98007BA376 /* FireWarWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWarWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61937D3D202B2A98007BA376 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61937D3F202B2A98007BA376 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		61937D42202B2A98007BA376 /* FireWarWall.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireWarWall.xcdatamodel; sourceTree = "<group>"; };
 		61937D44202B2A98007BA376 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61937D47202B2A98007BA376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61937D49202B2A98007BA376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61937D4A202B2A98007BA376 /* FireWarWall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireWarWall.entitlements; sourceTree = "<group>"; };
+		61937D50202B50B4007BA376 /* FireWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWall.swift; sourceTree = "<group>"; };
+		61937D52202B6164007BA376 /* IpsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpsManager.swift; sourceTree = "<group>"; };
+		61D36ECE2031062600819FE1 /* FireWarWall.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireWarWall.xcdatamodel; sourceTree = "<group>"; };
+		61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataClass.swift"; sourceTree = "<group>"; };
+		61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +49,8 @@
 		61937D31202B2A98007BA376 = {
 			isa = PBXGroup;
 			children = (
+				61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */,
+				61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */,
 				61937D3C202B2A98007BA376 /* FireWarWall */,
 				61937D3B202B2A98007BA376 /* Products */,
 			);
@@ -61,7 +73,10 @@
 				61937D46202B2A98007BA376 /* Main.storyboard */,
 				61937D49202B2A98007BA376 /* Info.plist */,
 				61937D4A202B2A98007BA376 /* FireWarWall.entitlements */,
-				61937D41202B2A98007BA376 /* FireWarWall.xcdatamodeld */,
+				61937D50202B50B4007BA376 /* FireWall.swift */,
+				61347F7A202B958900D9292B /* FilesManager.swift */,
+				61937D52202B6164007BA376 /* IpsManager.swift */,
+				61D36ECD2031062600819FE1 /* FireWarWall.xcdatamodeld */,
 			);
 			path = FireWarWall;
 			sourceTree = "<group>";
@@ -99,6 +114,11 @@
 					61937D39202B2A98007BA376 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -139,7 +159,12 @@
 			files = (
 				61937D40202B2A98007BA376 /* ViewController.swift in Sources */,
 				61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */,
-				61937D43202B2A98007BA376 /* FireWarWall.xcdatamodeld in Sources */,
+				61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */,
+				61937D51202B50B4007BA376 /* FireWall.swift in Sources */,
+				61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */,
+				61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */,
+				61937D53202B6164007BA376 /* IpsManager.swift in Sources */,
+				61347F7B202B958900D9292B /* FilesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,12 +292,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FireWarWall/FireWarWall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TFF2HTL4NS;
 				INFOPLIST_FILE = FireWarWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = Talaiot.FireWarWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -283,12 +308,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FireWarWall/FireWarWall.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TFF2HTL4NS;
 				INFOPLIST_FILE = FireWarWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = Talaiot.FireWarWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -319,12 +344,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		61937D41202B2A98007BA376 /* FireWarWall.xcdatamodeld */ = {
+		61D36ECD2031062600819FE1 /* FireWarWall.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				61937D42202B2A98007BA376 /* FireWarWall.xcdatamodel */,
+				61D36ECE2031062600819FE1 /* FireWarWall.xcdatamodel */,
 			);
-			currentVersion = 61937D42202B2A98007BA376 /* FireWarWall.xcdatamodel */;
+			currentVersion = 61D36ECE2031062600819FE1 /* FireWarWall.xcdatamodel */;
 			path = FireWarWall.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
