@@ -48,6 +48,7 @@ class IpsManager  {
     
     
     func parseLine(line:String)  -> NetStatConection {
+        
         var aIP:[String] = []
         let arrayOfLine = line.components(separatedBy:" ")
         
@@ -61,6 +62,7 @@ class IpsManager  {
                 }
             }
         }
+        
         var conection:NetStatConection = NetStatConection()
         if aIP.count > 1 {
             if aIP[0] != aIP[1] {
