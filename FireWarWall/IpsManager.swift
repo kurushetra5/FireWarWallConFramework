@@ -36,7 +36,12 @@ class IpsManager  {
         }
         for conection in arrayConections {
             if conection.destinationIp.count > 5 && conection.sourceIp.count > 5 {
-                conectionsFinal.append(conection)
+                if isValid(ip:conection.destinationIp) {
+                    if !isLocal(ip:conection.destinationIp) {
+                        conectionsFinal.append(conection)
+                    }
+                    
+                }
             }
         }
       return conectionsFinal
@@ -44,6 +49,18 @@ class IpsManager  {
     
     
     
+    func isLocal(ip:String) -> Bool {
+        
+        if ip == "127.0.0.1" {
+            return true
+        } else  if ip == "192.168.8.1" {
+            return true
+        }else  if ip == "192.168.8.100" {
+            return true
+        } else {
+            return false
+        }
+    }
     
     
     

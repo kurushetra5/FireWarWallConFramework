@@ -8,29 +8,8 @@
 
 import Cocoa
 
-class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,ProcessDelegate {
+class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AppControllerDelegate  {
 
-    
-    
-    
-    
-    @IBAction func startOrStopFirewall(_ sender: NSButton) {
-        
-        if sender.state == .off {
-            fireWall.runComand(type: .fireWallStart, ip: nil, delegate:self)
-            startStopButton.title = "STOP FIREWALL"
-        }else {
-            fireWall.runComand(type: .fireWallStop, ip: nil, delegate:self)
-            startStopButton.title = "START FIREWALL"
-        }
-    }
-    
-    
-    @IBAction func blockOrUnblockIp(_ sender: NSButton) {
-        fireWall.runComand(type: .addFireWallBadHosts, ip: nil, delegate:self)
-    }
-    
-    
     
     @IBOutlet weak var blockOrUnblockButton: NSButton!
     @IBOutlet weak var blockipText: NSTextField!
@@ -40,7 +19,31 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     @IBOutlet weak var startStopButton: NSButton!
     
     
-    var fireWall:FireWall = FireWall()
+    
+    @IBAction func startOrStopFirewall(_ sender: NSButton) {
+        appController.fireWall.showConections()
+//        if sender.state == .off {
+//            appController.fireWall.start()
+//            startStopButton.title = "STOP FIREWALL"
+//        }else {
+//            appController.fireWall.stop()
+//            startStopButton.title = "START FIREWALL"
+//        }
+    }
+    
+    
+    @IBAction func blockOrUnblockIp(_ sender: NSButton) {
+        appController.fireWall.block(ip:"12.23.23.2")
+    }
+    
+    
+    
+    
+    
+ 
+    var appController:AppController = AppController.shared
+    var aliveConections:[ConectionNode] = []
+    var blockedIps:[ConectionNode] = []
     
     
     
@@ -48,65 +51,62 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//         fireWall.runComand(type:ComandType.fireWallState, ip: nil, delegate:self)
-         fireWall.runComand(type:.netStat, ip: nil, delegate:self)
+        appController.delegate = self
+        appController.fireWall.showConections()
     }
 
     
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
+ 
+
+    
+    
+    
+    
+    
+    
+    func alive(conections:ConectionNode) {
+        aliveConections.append(conections)
+        print(conections.ip)
+        netstatTableView.reloadData()
+    }
+    
+    func blocked(ips:[ConectionNode]) {
+        blockedIps = ips
+        fireWallTableView.reloadData()
+    }
+    
+    func fireWall(state:Bool) {
+        
+        if state == true {
+            fireWallStateImage.backgroundColor = .green
+            startStopButton.title = "STOP FIREWALL"
+            //
+        }else {
+            fireWallStateImage.backgroundColor = .red
+            startStopButton.title = "START FIREWALL"
+            //
         }
     }
-
-    
-    
-    
    
-    func procesFinish(processName:String) {
-        
-        switch processName {
-        case ComandType.fireWallStart.rawValue:
-             fireWall.runComand(type:ComandType.fireWallState, ip: nil, delegate:self)
-            
-        case ComandType.fireWallStop.rawValue:
-            fireWall.runComand(type:ComandType.fireWallState, ip: nil, delegate:self)
-            
-//        case ComandType.addFireWallBadHosts.rawValue:
-//            blockedNodes = []
-//            updateBadHostsTableView()
-            
-//        case ComandType.deleteFireWallBadHosts.rawValue:
-//            blockedNodes = []
-//            updateBadHostsTableView()
-        default:
-            print("Error: procesFinish(processName:String)")
-        }    }
     
     
-    func newDataFromProcess(data:String , processName:String) {
-        
-        switch processName {
-        case ComandType.fireWallState.rawValue:
-            if data.contains("Enabled") {
-                fireWallStateImage.backgroundColor = .green
-                 startStopButton.title = "STOP FIREWALL"
-//
-            }else {
-                fireWallStateImage.backgroundColor = .red
-                startStopButton.title = "START FIREWALL"
-//
-            }
-//            updateBadHostsTableView()
-            
-//        case ComandType.fireWallBadHosts.rawValue:
-            //blockedNodes = []
-//            fireWallTableView.reloadData()
-        default:
-            print("Error: newDataFromProcess(data:String , processName:String)")
-        }
-        
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -28,21 +28,15 @@ protocol ComandIp:Comand  {
 }
 
 
-protocol ProcessDelegate {
-    func procesFinish(processName:String)
-    func newDataFromProcess(data:String , processName:String)
-}
+//protocol ProcessDelegate {
+//    func procesFinish(processName:String)
+//    func newDataFromProcess(data:String , processName:String)
+//}
 
 
-struct NetStatConection :Hashable {
+struct NetStatConection  {
     
-    var hashValue: Int {
-        return sourceIp.hashValue ^ destinationIp.hashValue &* 16777619
-    }
-    
-    static func == (lhs: NetStatConection, rhs: NetStatConection) -> Bool {
-        return lhs.sourceIp == rhs.sourceIp && lhs.destinationIp == rhs.destinationIp
-    }
+    var ipLocation:IPLocation!
     var sourceIp:String = ""
     var destinationIp:String = ""
     
