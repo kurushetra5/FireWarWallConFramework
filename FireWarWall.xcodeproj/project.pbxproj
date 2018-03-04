@@ -15,7 +15,6 @@
 		61937D48202B2A98007BA376 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61937D46202B2A98007BA376 /* Main.storyboard */; };
 		61937D51202B50B4007BA376 /* FireWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D50202B50B4007BA376 /* FireWall.swift */; };
 		61937D53202B6164007BA376 /* IpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D52202B6164007BA376 /* IpsManager.swift */; };
-		61950EDB203F56E100874A06 /* NetStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61950EDA203F56E100874A06 /* NetStat.swift */; };
 		61BD996E20425ECE0098C7D2 /* TimerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD996D20425ECE0098C7D2 /* TimerBackground.swift */; };
 		61C4DEC62032508A00727032 /* IPLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4DEC52032508A00727032 /* IPLocator.swift */; };
 		61C4DEC8203251A400727032 /* dataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4DEC7203251A400727032 /* dataBaseManager.swift */; };
@@ -55,7 +54,6 @@
 		61937D50202B50B4007BA376 /* FireWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWall.swift; sourceTree = "<group>"; };
 		61937D52202B6164007BA376 /* IpsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpsManager.swift; sourceTree = "<group>"; };
 		61950EAB204A0D21005D8F50 /* FireWallOperations.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FireWallOperations.xcodeproj; path = FireWallOperations/FireWallOperations.xcodeproj; sourceTree = "<group>"; };
-		61950EDA203F56E100874A06 /* NetStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStat.swift; sourceTree = "<group>"; };
 		61BD996D20425ECE0098C7D2 /* TimerBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackground.swift; sourceTree = "<group>"; };
 		61C4DEC52032508A00727032 /* IPLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IPLocator.swift; path = ../FireWallOperations/FireWallOperations/IPLocator.swift; sourceTree = "<group>"; };
 		61C4DEC7203251A400727032 /* dataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataBaseManager.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				61937D52202B6164007BA376 /* IpsManager.swift */,
 				61C4DEC52032508A00727032 /* IPLocator.swift */,
 				61D36ECD2031062600819FE1 /* FireWarWall.xcdatamodeld */,
-				61950EDA203F56E100874A06 /* NetStat.swift */,
 				61BD996D20425ECE0098C7D2 /* TimerBackground.swift */,
 			);
 			path = FireWarWall;
@@ -244,7 +241,6 @@
 				61937D40202B2A98007BA376 /* ViewController.swift in Sources */,
 				61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */,
 				61C4DEC62032508A00727032 /* IPLocator.swift in Sources */,
-				61950EDB203F56E100874A06 /* NetStat.swift in Sources */,
 				61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */,
 				61937D51202B50B4007BA376 /* FireWall.swift in Sources */,
 				61D79AC52034E0CD00CE226B /* AppController.swift in Sources */,

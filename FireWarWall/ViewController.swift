@@ -61,7 +61,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     override func viewDidAppear() {
          super.viewDidAppear()
 //        appController.fireWall.showConections()
-         appController.fireWall.state()
+//         appController.fireWall.state()
     }
 
     

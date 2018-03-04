@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol  ComandRunerDelegate {
-    func comandFinishWith(data:String)
+    func comand(finishWith data:String)
 }
 
 
@@ -19,39 +19,13 @@ class  ComandRuner  {
     
     public var comandRunerDelegate:ComandRunerDelegate!
     private var stateResult:String = "no set"
-    
-    
-    
-    public func runComand(comand:Comand,  onCompleted: ((String?)  ->  ())?) {
-        
-        let task = Process()
-        task.launchPath = comand.taskPath
-        task.arguments = comand.taskArgs
-        
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        let fh = pipe.fileHandleForReading
-        fh.waitForDataInBackgroundAndNotify()
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(receivedData), name: NSNotification.Name.NSFileHandleDataAvailable, object: nil)
-        
-        task.terminationHandler = {task -> Void in
-            
-            onCompleted?(self.stateResult)
-//            self.processResults()
-        }
-        task.launch()
-        
-        
-    }
+    private var comandType:ComandType!
     
     
     
     public func runComand(type:ComandType, ip:String!) {
-        
- 
         stateResult = "no set"
+        comandType = type
         
         if type is ComandIp  {
             if ip == nil {
@@ -63,8 +37,10 @@ class  ComandRuner  {
         switch type {
         case .netStat:
             run(comand:NetStat())
+            
         case .fireWallState:
             run(comand:FireWallState())
+           
         case .addFireWallBadHosts:
             run(comand:AddFireWallBadHosts(withIp:ip))
         case .deleteFireWallBadHosts:
@@ -88,7 +64,7 @@ class  ComandRuner  {
     
     
   private  func run(comand:Comand ) {
-//         print("run  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+ 
         let task = Process()
         task.launchPath = comand.taskPath
         task.arguments = comand.taskArgs
@@ -101,52 +77,31 @@ class  ComandRuner  {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(receivedData), name: NSNotification.Name.NSFileHandleDataAvailable, object: nil)
         
-        task.terminationHandler = {task -> Void in
-                       print("acabado")
-//            OperationQueue.main.addOperation({
-//            self.processResults()
-//             print("self.processResults()  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-//                  })
-        }
+//        task.terminationHandler = {task -> Void in
+//        print("acabado")
+//
+//        }
         task.launch()
     }
     
     
     
     
-    
-   private func  processResults()  {
-//         print(" processResults()  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-//        OperationQueue.main.addOperation({
-      DispatchQueue.main.sync {
-             self.comandRunerDelegate?.comandFinishWith(data:self.stateResult)
-//         print("self.comandRunerDelegate?  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-            }
-    
-    }
-    
-    
-    
-    
-     @objc private func receivedData(notif : NSNotification) {
+    @objc private func receivedData(notif : NSNotification) {
         
         let fh:FileHandle = notif.object as! FileHandle
         
         let data = fh.availableData
         if data.count > 1 {
             let string =  String(data: data, encoding: String.Encoding(rawValue: String.Encoding.ascii.rawValue))
-//             OperationQueue.main.addOperation({
             self.stateResult = string!
-//              DispatchQueue.main.sync {
-                self.comandRunerDelegate?.comandFinishWith(data:self.stateResult)
-                //         print("self.comandRunerDelegate?  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-//              }
-            
-//             })
-            
+            self.comandRunerDelegate?.comand(finishWith: self.stateResult)
             fh.waitForDataInBackgroundAndNotify()
         }
     }
+    
+    
+    
     
     
 }

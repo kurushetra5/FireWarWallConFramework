@@ -48,6 +48,8 @@ class ViewController: NSViewController,ComandRunerDelegate {
         let queue1 = DispatchQueue(label: "com.knowstack.queue1", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
         let queue2 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
         
+        
+        
         queue1.sync {
  
             self.comandRuner.runComand(type:.netStat, ip: nil)
