@@ -18,14 +18,14 @@ protocol  AppControllerDelegate {
 
 
 
-  class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
+class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
-     init() {
+    init() {
         configureFireWall()
     }
-//    static let shared = AppController()
+    //    static let shared = AppController()
     var delegate:AppControllerDelegate!
-
+    
     var fireWall:FireWall = FireWall()
     var dataBase:dataBaseManager = dataBaseManager()
     var ipLocator:IPLocator = IPLocator()
@@ -48,7 +48,7 @@ protocol  AppControllerDelegate {
     func checkDataBaseFor(conection:NetStatConection) {
         
         if let node = dataBase.isInDataBase(ip:conection) {
-             DispatchQueue.main.sync {
+            DispatchQueue.main.sync {
                 delegate?.alive(conections:node)
             }
             
@@ -57,11 +57,7 @@ protocol  AppControllerDelegate {
             ipLocator.fetchIpLocation(conection:conection)
         }
         
-//        if  dataBase.isInDataBase(ip:conection) == true {
-//
-//        }else {
-//            ipLocator.fetchIpLocation(conection:conection)
-//        }
+        
     }
     
     
@@ -78,21 +74,30 @@ protocol  AppControllerDelegate {
     func fireWallEstablished(conections:[ConectionNode]) {
         
     }
+    
+    
     func fireWallEstablished(ips:[NetStatConection]) {
-//         print("fireWallEstablished running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-//        checkDataBaseFor(ip:ips[0].destinationIp)
-         for conection in ips {
+        //         print("fireWallEstablished running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+        //        checkDataBaseFor(ip:ips[0].destinationIp)
+        for conection in ips {
             checkDataBaseFor(conection:conection) //TODO: Cambiar pasarle un ConectionNode
-         }
+        }
         
     }
+    
+    
+    
     func fireWallBlocked(ips:[ConectionNode]) {
-         delegate?.blocked(ips:ips)
+        delegate?.blocked(ips:ips)
     }
+    
+    
+    
+    
     func fireWall(state:Bool) {
-         print("fireWall running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+        //         print("fireWall running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
         DispatchQueue.main.sync {
-         delegate?.fireWall(state:state)
+            delegate?.fireWall(state:state)
         }
     }
     
@@ -101,16 +106,16 @@ protocol  AppControllerDelegate {
     
     //TODO: para extension de protocolo ---------------------------
     func fireWallDidUnblockIp() {
-         fireWall.showBlockedIps()
+        fireWall.showBlockedIps()
     }
     func fireWallDidBlockIp() {
-         fireWall.showBlockedIps()
+        fireWall.showBlockedIps()
     }
     func fireWallDidStart() {
-         fireWall.state()
+        fireWall.state()
     }
     func fireWallDidStop() {
-         fireWall.state()
+        fireWall.state()
     }
     
     
@@ -118,7 +123,7 @@ protocol  AppControllerDelegate {
     //MARK: --------  ipLocationDelegate ---------------
     func ipLocationReady(ipLocation:NetStatConection) {
         
-         dataBase.ipLocationReady(ipNode:ipLocation)
+        dataBase.ipLocationReady(ipNode:ipLocation)
     }
     
     
@@ -132,8 +137,8 @@ protocol  AppControllerDelegate {
     func filled(node:ConectionNode) {
         
         self.delegate?.alive(conections:node)
-       
+        
     }
     
-
+    
 }

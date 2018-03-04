@@ -9,7 +9,7 @@
 import Cocoa
 
 class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AppControllerDelegate  {
-
+    
     //MARK: -------- @@IBOutlet  ---------------
     @IBOutlet weak var blockOrUnblockButton: NSButton!
     @IBOutlet weak var blockipText: NSTextField!
@@ -19,16 +19,16 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     @IBOutlet weak var startStopButton: NSButton!
     
     
-      //MARK: -------- @IBAction  ---------------
+    //MARK: -------- @IBAction  ---------------
     
     @IBAction func startOrStopFirewall(_ sender: NSButton) {
-//        appController.fireWall.showConections()
+        
         if sender.state == .off {
             appController.fireWall.start()
-//            startStopButton.title = "STOP FIREWALL"
+            
         }else {
             appController.fireWall.stop()
-//            startStopButton.title = "START FIREWALL"
+            
         }
     }
     
@@ -41,7 +41,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     
-     //MARK: -------- Class VARS  ---------------
+    //MARK: -------- Class VARS  ---------------
     var appController:AppController = AppController()
     var aliveConections:[ConectionNode] = []
     var blockedIps:[ConectionNode] = []
@@ -49,38 +49,36 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     
-     //MARK: -------- Life Circle  ---------------
+    //MARK: -------- Life Circle  ---------------
     override func viewDidLoad() {
         super.viewDidLoad()
         appController.delegate = self
         appController.fireWall.showConections()
         
     }
-
     
-    override func viewDidAppear() {
-         super.viewDidAppear()
-//        appController.fireWall.showConections()
-//         appController.fireWall.state()
-    }
-
+    
+//    override func viewDidAppear() {
+//        super.viewDidAppear()
+//
+//    }
     
     
     
     
     
-     //MARK: --------  AppController Delegate  ---------------
+    
+    //MARK: --------  AppController Delegate  ---------------
     func alive(conections:ConectionNode) {
-//        DispatchQueue.main.sync {
-//         print("alive  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-            self.aliveConections.append(conections)
-            print(conections.ip ?? "empty ip")
-            self.netstatTableView.reloadData()
-//        }
         
-        
-       
+        if !aliveConections.contains(conections) {
+            aliveConections.append(conections)
+//            print(conections.ip ?? "empty ip")
+            netstatTableView.reloadData()
+        }
     }
+    
+    
     
     
     func blocked(ips:[ConectionNode]) {
@@ -89,7 +87,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     }
     
     func fireWall(state:Bool) {
-         print("fireWall(state running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+//        print("fireWall(state running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
         if state == true {
             fireWallStateImage.backgroundColor = .green
             startStopButton.title = "STOP FIREWALL"
@@ -99,9 +97,9 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
             startStopButton.title = "START FIREWALL"
             //
         }
-//         appController.fireWall.showConections()
+        //         appController.fireWall.showConections()
     }
-   
+    
     
     
     
@@ -110,7 +108,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     //MARK:---------------------- TABLE_VIEW Delegate --------------------
     func numberOfRows(in tableView: NSTableView) -> Int {
         
-        return 1
+        return aliveConections.count
     }
     
     
@@ -118,25 +116,34 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         var cellIdentifier: String = ""
+        var text: String = "-"
         
-        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView
         
-        if tableView.identifier!.rawValue == "fireWall" {
+        if tableView.identifier!.rawValue == "netstat" {
             
-            if tableColumn == fireWallTableView.tableColumns[0] {
-                cellIdentifier = "IpBlocked"
-//                text = ip.number!
+            if tableColumn == netstatTableView.tableColumns[0] {
+                cellIdentifier = "conectionIp"
+                text = aliveConections[row].destination!
+            }
+            if tableColumn == netstatTableView.tableColumns[1] {
+                cellIdentifier = "ipLocation"
+                text = aliveConections[row].adress!
             }
             
+            let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView
+            cell?.textField?.stringValue = text
             return cell
         }
+        
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView
+        cell?.textField?.stringValue = text
         return cell
     }
     
     
     
     
-     func tableViewSelectionDidChange(_ notification: Notification) {
+    func tableViewSelectionDidChange(_ notification: Notification) {
         
     }
 }

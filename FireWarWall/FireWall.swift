@@ -24,8 +24,12 @@ protocol FireWallDelegate {
 
 
 
+
+
 //MARK: --------  Class  FireWall  ---------------
 class FireWall: ComandRunerDelegate {
+    
+    
     
     
     //MARK: --------  Class  VARS  ---------------
@@ -40,14 +44,20 @@ class FireWall: ComandRunerDelegate {
     }
     
     
+    
+    
+    
     //MARK: --------  ComandRuner Delegate ---------------
     
     
     func comand(finishWith data: String) {
         
-        print(data)
+//        print(data)
         parseComand(result: data)
     }
+    
+    
+    
     
     
     
@@ -129,7 +139,7 @@ class FireWall: ComandRunerDelegate {
         
         DispatchQueue.global(qos:.background).async{
             let timer:Foundation.Timer = Foundation.Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.backgroundTimerAction(_:)), userInfo: nil, repeats: true);
-            print("State Timer  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+//            print("State Timer  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
             let runLoop:RunLoop = RunLoop.current;
             runLoop.add(timer, forMode: RunLoopMode.defaultRunLoopMode);
             runLoop.run();
