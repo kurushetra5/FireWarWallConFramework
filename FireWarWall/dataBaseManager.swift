@@ -53,7 +53,7 @@ class dataBaseManager  {
     
     func ipLocationReady(ipNode:NetStatConection) {
         
-         var newNode:ConectionNode = newIpEntity()
+         let newNode:ConectionNode = newIpEntity()
          newNode.adress = ipNode.ipLocation.city
          newNode.destination = ipNode.destinationIp
          newNode.ip = ipNode.destinationIp

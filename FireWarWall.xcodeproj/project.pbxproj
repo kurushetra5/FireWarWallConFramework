@@ -7,22 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613F0A63204B43DD0017B8DC /* Comand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F0A62204B43DD0017B8DC /* Comand.swift */; };
+		613F0A65204B43F70017B8DC /* Comands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F0A64204B43F70017B8DC /* Comands.swift */; };
 		61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D3D202B2A98007BA376 /* AppDelegate.swift */; };
 		61937D40202B2A98007BA376 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D3F202B2A98007BA376 /* ViewController.swift */; };
 		61937D45202B2A98007BA376 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61937D44202B2A98007BA376 /* Assets.xcassets */; };
 		61937D48202B2A98007BA376 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61937D46202B2A98007BA376 /* Main.storyboard */; };
 		61937D51202B50B4007BA376 /* FireWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D50202B50B4007BA376 /* FireWall.swift */; };
 		61937D53202B6164007BA376 /* IpsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D52202B6164007BA376 /* IpsManager.swift */; };
+		61950EDB203F56E100874A06 /* NetStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61950EDA203F56E100874A06 /* NetStat.swift */; };
+		61BD996E20425ECE0098C7D2 /* TimerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD996D20425ECE0098C7D2 /* TimerBackground.swift */; };
 		61C4DEC62032508A00727032 /* IPLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4DEC52032508A00727032 /* IPLocator.swift */; };
 		61C4DEC8203251A400727032 /* dataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4DEC7203251A400727032 /* dataBaseManager.swift */; };
 		61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ECD2031062600819FE1 /* FireWarWall.xcdatamodeld */; };
 		61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */; };
 		61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */; };
-		61D36ED520310B5C00819FE1 /* Comands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED420310B5C00819FE1 /* Comands.swift */; };
 		61D79AC52034E0CD00CE226B /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D79AC42034E0CD00CE226B /* AppController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		61950EAF204A0D23005D8F50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61950EAB204A0D21005D8F50 /* FireWallOperations.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61950E98204A0D21005D8F50;
+			remoteInfo = FireWallOperations;
+		};
+		61E4B9BD20461EC500FC3F7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61E4B9B920461EC300FC3F7E /* Kuru_Threads-timers-Task.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61E4B9A620461EC300FC3F7E;
+			remoteInfo = "Kuru_Threads-timers-Task";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		613F0A62204B43DD0017B8DC /* Comand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Comand.swift; path = FireWarWall/Comand.swift; sourceTree = "<group>"; };
+		613F0A64204B43F70017B8DC /* Comands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Comands.swift; path = FireWallOperations/FireWallOperations/Comands/Comands.swift; sourceTree = "<group>"; };
 		61937D3A202B2A98007BA376 /* FireWarWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWarWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61937D3D202B2A98007BA376 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61937D3F202B2A98007BA376 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,13 +54,16 @@
 		61937D4A202B2A98007BA376 /* FireWarWall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireWarWall.entitlements; sourceTree = "<group>"; };
 		61937D50202B50B4007BA376 /* FireWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWall.swift; sourceTree = "<group>"; };
 		61937D52202B6164007BA376 /* IpsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpsManager.swift; sourceTree = "<group>"; };
-		61C4DEC52032508A00727032 /* IPLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPLocator.swift; sourceTree = "<group>"; };
+		61950EAB204A0D21005D8F50 /* FireWallOperations.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FireWallOperations.xcodeproj; path = FireWallOperations/FireWallOperations.xcodeproj; sourceTree = "<group>"; };
+		61950EDA203F56E100874A06 /* NetStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStat.swift; sourceTree = "<group>"; };
+		61BD996D20425ECE0098C7D2 /* TimerBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackground.swift; sourceTree = "<group>"; };
+		61C4DEC52032508A00727032 /* IPLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IPLocator.swift; path = ../FireWallOperations/FireWallOperations/IPLocator.swift; sourceTree = "<group>"; };
 		61C4DEC7203251A400727032 /* dataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataBaseManager.swift; sourceTree = "<group>"; };
 		61D36ECE2031062600819FE1 /* FireWarWall.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireWarWall.xcdatamodel; sourceTree = "<group>"; };
 		61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataClass.swift"; sourceTree = "<group>"; };
 		61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		61D36ED420310B5C00819FE1 /* Comands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comands.swift; sourceTree = "<group>"; };
 		61D79AC42034E0CD00CE226B /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		61E4B9B920461EC300FC3F7E /* Kuru_Threads-timers-Task.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Kuru_Threads-timers-Task.xcodeproj"; path = "Pruebas/Kuru_Threads-timers-Task/Kuru_Threads-timers-Task.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +80,10 @@
 		61937D31202B2A98007BA376 = {
 			isa = PBXGroup;
 			children = (
+				613F0A64204B43F70017B8DC /* Comands.swift */,
+				613F0A62204B43DD0017B8DC /* Comand.swift */,
+				61950EAB204A0D21005D8F50 /* FireWallOperations.xcodeproj */,
+				61E4B9B920461EC300FC3F7E /* Kuru_Threads-timers-Task.xcodeproj */,
 				61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */,
 				61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */,
 				61937D3C202B2A98007BA376 /* FireWarWall */,
@@ -85,9 +114,26 @@
 				61937D52202B6164007BA376 /* IpsManager.swift */,
 				61C4DEC52032508A00727032 /* IPLocator.swift */,
 				61D36ECD2031062600819FE1 /* FireWarWall.xcdatamodeld */,
-				61D36ED420310B5C00819FE1 /* Comands.swift */,
+				61950EDA203F56E100874A06 /* NetStat.swift */,
+				61BD996D20425ECE0098C7D2 /* TimerBackground.swift */,
 			);
 			path = FireWarWall;
+			sourceTree = "<group>";
+		};
+		61950EAC204A0D21005D8F50 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61950EB0204A0D23005D8F50 /* FireWallOperations.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61E4B9BA20461EC300FC3F7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61E4B9BE20461EC500FC3F7E /* Kuru_Threads-timers-Task.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,12 +188,39 @@
 			mainGroup = 61937D31202B2A98007BA376;
 			productRefGroup = 61937D3B202B2A98007BA376 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 61950EAC204A0D21005D8F50 /* Products */;
+					ProjectRef = 61950EAB204A0D21005D8F50 /* FireWallOperations.xcodeproj */;
+				},
+				{
+					ProductGroup = 61E4B9BA20461EC300FC3F7E /* Products */;
+					ProjectRef = 61E4B9B920461EC300FC3F7E /* Kuru_Threads-timers-Task.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				61937D39202B2A98007BA376 /* FireWarWall */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		61950EB0204A0D23005D8F50 /* FireWallOperations.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = FireWallOperations.app;
+			remoteRef = 61950EAF204A0D23005D8F50 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		61E4B9BE20461EC500FC3F7E /* Kuru_Threads-timers-Task.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Kuru_Threads-timers-Task.app";
+			remoteRef = 61E4B9BD20461EC500FC3F7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		61937D38202B2A98007BA376 /* Resources */ = {
@@ -166,15 +239,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				613F0A65204B43F70017B8DC /* Comands.swift in Sources */,
+				613F0A63204B43DD0017B8DC /* Comand.swift in Sources */,
 				61937D40202B2A98007BA376 /* ViewController.swift in Sources */,
 				61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */,
 				61C4DEC62032508A00727032 /* IPLocator.swift in Sources */,
+				61950EDB203F56E100874A06 /* NetStat.swift in Sources */,
 				61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */,
 				61937D51202B50B4007BA376 /* FireWall.swift in Sources */,
 				61D79AC52034E0CD00CE226B /* AppController.swift in Sources */,
 				61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */,
 				61C4DEC8203251A400727032 /* dataBaseManager.swift in Sources */,
-				61D36ED520310B5C00819FE1 /* Comands.swift in Sources */,
+				61BD996E20425ECE0098C7D2 /* TimerBackground.swift in Sources */,
 				61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */,
 				61937D53202B6164007BA376 /* IpsManager.swift in Sources */,
 			);

@@ -18,12 +18,12 @@ protocol  AppControllerDelegate {
 
 
 
-final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
+  class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
-    private init() {
+     init() {
         configureFireWall()
     }
-    static let shared = AppController()
+//    static let shared = AppController()
     var delegate:AppControllerDelegate!
 
     var fireWall:FireWall = FireWall()
@@ -48,7 +48,11 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     func checkDataBaseFor(conection:NetStatConection) {
         
         if let node = dataBase.isInDataBase(ip:conection) {
-            delegate?.alive(conections:node)
+             DispatchQueue.main.sync {
+                delegate?.alive(conections:node)
+            }
+            
+            
         }else {
             ipLocator.fetchIpLocation(conection:conection)
         }
@@ -75,7 +79,7 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         
     }
     func fireWallEstablished(ips:[NetStatConection]) {
-        
+//         print("fireWallEstablished running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
 //        checkDataBaseFor(ip:ips[0].destinationIp)
          for conection in ips {
             checkDataBaseFor(conection:conection) //TODO: Cambiar pasarle un ConectionNode
@@ -86,8 +90,13 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
          delegate?.blocked(ips:ips)
     }
     func fireWall(state:Bool) {
+         print("fireWall running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+        DispatchQueue.main.sync {
          delegate?.fireWall(state:state)
+        }
     }
+    
+    
     
     
     //TODO: para extension de protocolo ---------------------------
@@ -121,7 +130,9 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         
     }
     func filled(node:ConectionNode) {
-        delegate?.alive(conections:node)
+        
+        self.delegate?.alive(conections:node)
+       
     }
     
 

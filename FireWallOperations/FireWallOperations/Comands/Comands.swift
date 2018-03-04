@@ -28,10 +28,7 @@ protocol ComandIp:Comand  {
 }
 
 
-//protocol ProcessDelegate {
-//    func procesFinish(processName:String)
-//    func newDataFromProcess(data:String , processName:String)
-//}
+
 
 
 struct NetStatConection  {
