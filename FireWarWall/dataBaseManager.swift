@@ -43,8 +43,22 @@ class dataBaseManager  {
     }
     
     
-    
+    public  func cleanDataBase() {
+        
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName:"ConectionNode")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        do {
+            try managedContext.execute(request)
+            
+        } catch {
+            // Error Handling
+        }
+        
+    }
  
+    
+    
+    
     func nodeIpReady(node:ConectionNode) {
         
     }

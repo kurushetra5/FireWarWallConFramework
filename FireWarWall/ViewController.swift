@@ -34,7 +34,8 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     @IBAction func blockOrUnblockIp(_ sender: NSButton) {
-        appController.fireWall.block(ip:"12.23.23.2")
+//        appController.fireWall.block(ip:"12.23.23.2")
+        appController.cleanIpsDataBase()
     }
     
     

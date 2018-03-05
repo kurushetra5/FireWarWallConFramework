@@ -60,10 +60,14 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         
     }
     
-    
-    func locationFor(ip:String) {
-        
+    func cleanIpsDataBase() {
+        dataBase.cleanDataBase()
     }
+    
+    
+//    func locationFor(ip:String) {
+//
+//    }
     
     
     
