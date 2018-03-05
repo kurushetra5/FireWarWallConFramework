@@ -35,7 +35,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     @IBAction func blockOrUnblockIp(_ sender: NSButton) {
 //        appController.fireWall.block(ip:"12.23.23.2")
-        appController.cleanIpsDataBase()
+//        appController.cleanIpsDataBase()
     }
     
     
@@ -53,6 +53,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     //MARK: -------- Life Circle  ---------------
     override func viewDidLoad() {
         super.viewDidLoad()
+//        appController.cleanIpsDataBase()
         appController.delegate = self
         appController.fireWall.showConections()
         
@@ -123,14 +124,21 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
         if tableView.identifier!.rawValue == "netstat" {
             
             if tableColumn == netstatTableView.tableColumns[0] {
-                cellIdentifier = "conectionIp"
+                cellIdentifier = "ipNumber"
                 text = aliveConections[row].destination!
             }
             if tableColumn == netstatTableView.tableColumns[1] {
-                cellIdentifier = "ipLocation"
+                cellIdentifier = "ipCountry"
+                text = aliveConections[row].country!
+            }
+            if tableColumn == netstatTableView.tableColumns[2] {
+                cellIdentifier = "ipCity"
+                text = aliveConections[row].city!
+            }
+            if tableColumn == netstatTableView.tableColumns[3] {
+                cellIdentifier = "ipOrg"
                 text = aliveConections[row].adress!
             }
-            
             let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView
             cell?.textField?.stringValue = text
             return cell

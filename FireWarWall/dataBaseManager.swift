@@ -39,7 +39,7 @@ class dataBaseManager  {
     
     init() {
         managedContext = self.appDelegate.persistentContainer.viewContext
- 
+        resetAllConections()
     }
     
     
@@ -56,6 +56,13 @@ class dataBaseManager  {
         
     }
  
+    func resetAllConections() {
+        
+        for node in dataBase {
+            node.conected = false
+        }
+    }
+    
     
     
     
@@ -68,8 +75,9 @@ class dataBaseManager  {
     func ipLocationReady(ipNode:NetStatConection) {
         
          let newNode:ConectionNode = newIpEntity()
-         newNode.adress = ipNode.ipLocation.country
-//         newNode.adress = ipNode.ipLocation.city
+         newNode.adress = ipNode.ipLocation.org
+         newNode.city = ipNode.ipLocation.city
+         newNode.country = ipNode.ipLocation.country
          newNode.destination = ipNode.destinationIp
          newNode.ip = ipNode.destinationIp
          newNode.source = ipNode.sourceIp
@@ -141,7 +149,7 @@ class dataBaseManager  {
         
         do {
             let searchResults = try managedContext.fetch(fetchRequest)
-            print ("num of results = \(searchResults.count)")
+//            print ("num of results = \(searchResults.count)")
             
             for ip in searchResults as [ConectionNode] {
                 nodes.append(ip)
@@ -165,6 +173,7 @@ class dataBaseManager  {
         
         
         if let keepedConection = fetchInfoFor(ip:ip) {
+            keepedConection.conected = true
             return keepedConection
         }else {
             return nil

@@ -2,7 +2,7 @@
 //  ConectionNode+CoreDataProperties.swift
 //  FireWarWall
 //
-//  Created by Kurushetra on 17/2/18.
+//  Created by Kurushetra on 5/3/18.
 //  Copyright © 2018 Kurushetra. All rights reserved.
 //
 //
@@ -22,5 +22,8 @@ extension ConectionNode {
     @NSManaged public var ip: String?
     @NSManaged public var source: String?
     @NSManaged public var timesConected: Int16
+    @NSManaged public var city: String?
+    @NSManaged public var country: String?
+    @NSManaged public var conected: Bool
 
 }

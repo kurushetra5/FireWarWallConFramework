@@ -140,7 +140,10 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     }
     func filled(node:ConectionNode) {
         
-        self.delegate?.alive(conections:node)
+        if node.conected == true {
+           self.delegate?.alive(conections:node)
+        }
+        
         
     }
     
