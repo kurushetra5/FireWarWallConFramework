@@ -30,8 +30,6 @@ protocol FireWallDelegate {
 class FireWall: ComandRunerDelegate {
     
     
-    
-    
     //MARK: --------  Class  VARS  ---------------
     private var comandRuner:ComandRuner = ComandRuner()
     private var ipsManager:IpsManager = IpsManager()
@@ -45,62 +43,15 @@ class FireWall: ComandRunerDelegate {
     
     
     
-    
-    
-    //MARK: --------  ComandRuner Delegate ---------------
-    
-    
-    func comand(finishWith data: String) {
-        
-//        print(data)
-        parseComand(result: data)
-    }
-    
-    
-    
-    
-    
-    
-    
     //MARK: --------  Public Funcs  ---------------
-   public func runComands() {
-        
-        let queue1 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
-        let queue2 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
-        
-        queue1.sync {
-            
-            self.comandRuner.runComand(type:.fireWallState, ip: nil)
-        }
-        queue2.sync {
-            
-            self.comandRuner.runComand(type:.netStat, ip: nil)
-        }
-        
+    
+    func showConections() {
+        backgroundTimer()
     }
-    
-    
-    
     
     public func state()  {
         
- 
     }
-    
-    
-    func showConections() {
- 
-          backgroundTimer()
-        
- 
-    }
-    
-    
-    
-    func pauseNetStat() {
- 
-    }
-    
     
     func start() {
  
@@ -133,7 +84,19 @@ class FireWall: ComandRunerDelegate {
     
     
     
-  //MARK: --------  Private Funcs  ---------------
+    //MARK: --------  ComandRuner Delegate ---------------
+    func comand(finishWith data: String) {
+        parseComand(result: data)
+    }
+    
+    
+   
+    
+    
+    
+    
+    
+  //MARK: --------    Funcs  ---------------
     
    private func backgroundTimer()  {
         
@@ -153,6 +116,24 @@ class FireWall: ComandRunerDelegate {
  
     }
     
+    
+    
+    
+    public func runComands() {
+        
+//        let queue1 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+        let queue2 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+        
+//        queue1.sync {
+//
+//            self.comandRuner.runComand(type:.fireWallState, ip: nil)
+//        }
+        queue2.sync {
+            
+            self.comandRuner.runComand(type:.netStat, ip: nil)
+        }
+        
+    }
     
     
     func parseComand(result:String)  {
