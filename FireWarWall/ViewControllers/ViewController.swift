@@ -91,12 +91,12 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     func fireWall(state:Bool) {
 //        print("fireWall(state running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
         if state == true {
-            fireWallStateImage.backgroundColor = .green
-            startStopButton.title = "STOP FIREWALL"
+//            fireWallStateImage.backgroundColor = .green
+//            startStopButton.title = "STOP FIREWALL"
             //
         }else {
-            fireWallStateImage.backgroundColor = .red
-            startStopButton.title = "START FIREWALL"
+//            fireWallStateImage.backgroundColor = .red
+//            startStopButton.title = "START FIREWALL"
             //
         }
         //         appController.fireWall.showConections()
