@@ -940,10 +940,10 @@
             </objects>
             <point key="canvasLocation" x="-655" y="662"/>
         </scene>
-        <!--View Controller-->
+        <!--Fire WallVC-->
         <scene sceneID="WzP-Wo-Vb4">
             <objects>
-                <viewController id="RrO-rB-inD" sceneMemberID="viewController">
+                <viewController id="RrO-rB-inD" customClass="FireWallVC" customModule="FireWarWall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JK3-T6-lpa">
                         <rect key="frame" x="0.0" y="0.0" width="1058" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -973,6 +973,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="unblockIp:" target="RrO-rB-inD" id="1iA-t9-dRX"/>
+                                </connections>
                             </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="60" horizontalPageScroll="10" verticalLineScroll="60" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4p-Y5-bxo">
                                 <rect key="frame" x="0.0" y="34" width="1058" height="522"/>
@@ -1155,8 +1158,8 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="JLZ-wh-Klm"/>
-                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="Fps-ez-sHF"/>
+                                                <outlet property="dataSource" destination="RrO-rB-inD" id="8Yq-Mx-QMb"/>
+                                                <outlet property="delegate" destination="RrO-rB-inD" id="6hX-ve-2os"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -1182,20 +1185,28 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="startOrStopFirewall:" target="RrO-rB-inD" id="h6B-ol-4Sm"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="backgroundLabel" destination="Q59-kv-QmU" id="AUD-ac-ZWS"/>
+                        <outlet property="fireWallTableView" destination="iqj-qu-mjV" id="Ews-in-Zcr"/>
+                        <outlet property="startStopButton" destination="iWX-d5-SzY" id="6pt-Vn-EXV"/>
+                    </connections>
                 </viewController>
                 <customObject id="oog-SO-eci" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="662"/>
+            <point key="canvasLocation" x="464" y="662"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hdh-gJ-UfC">
             <objects>
                 <viewController id="mKb-lS-Cku" sceneMemberID="viewController">
                     <view key="view" id="Nbu-YR-V4s">
-                        <rect key="frame" x="0.0" y="0.0" width="341" height="601"/>
+                        <rect key="frame" x="0.0" y="0.0" width="147" height="601"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1b-Nf-Qdj">
@@ -1242,48 +1253,12 @@
                                     <segue destination="RLI-Ke-X3m" kind="show" id="mLu-IV-5Hc"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tyN-mC-vja">
-                                <rect key="frame" x="145" y="513" width="198" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="ESTABLISHED " id="MVd-Xc-Few">
-                                    <font key="font" metaFont="system" size="23"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVy-4H-exi">
-                                <rect key="frame" x="145" y="357" width="198" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="BLOCKED " id="HTI-Ri-Ut3">
-                                    <font key="font" metaFont="system" size="23"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ec-nv-T8b">
-                                <rect key="frame" x="145" y="207" width="198" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="LOCATION" id="Q4k-fc-FhM">
-                                    <font key="font" metaFont="system" size="23"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s7U-Dx-Yw0">
-                                <rect key="frame" x="145" y="63" width="198" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="INFO" id="8VP-AN-Z18">
-                                    <font key="font" metaFont="system" size="23"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="GPn-CK-fmi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-969" y="-176"/>
+            <point key="canvasLocation" x="-1066.5" y="-176.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1mo-tN-Haa">
@@ -1315,7 +1290,7 @@
                                             <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <size key="minSize" width="1056" height="520"/>
-                                            <size key="maxSize" width="1056" height="10000000"/>
+                                            <size key="maxSize" width="1058" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment content="2323 fgfgfggf">
                                                     <attributes>

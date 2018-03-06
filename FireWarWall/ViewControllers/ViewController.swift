@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AppControllerDelegate  {
+
+class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AppAliveConectionsDelegate  {
     
     //MARK: -------- @@IBOutlet  ---------------
     @IBOutlet weak var blockOrUnblockButton: NSButton!
@@ -20,54 +21,29 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     //MARK: -------- @IBAction  ---------------
-    
-    @IBAction func startOrStopFirewall(_ sender: NSButton) {
-        
-        if sender.state == .off {
-            appController.fireWall.start()
-            
-        }else {
-            appController.fireWall.stop()
-            
-        }
-    }
-    
-    
-    @IBAction func blockOrUnblockIp(_ sender: NSButton) {
+    @IBAction func  blockIp(_ sender: NSButton) {
 //        appController.fireWall.block(ip:"12.23.23.2")
 //        appController.cleanIpsDataBase()
     }
     
     
-    
-    
-    
     //MARK: -------- Class VARS  ---------------
-    var appController:AppController = AppController()
+    var appController:AppController = AppController.shared
     var aliveConections:[ConectionNode] = []
-    var blockedIps:[ConectionNode] = []
-    
-    
+ 
     
     
     //MARK: -------- Life Circle  ---------------
     override func viewDidLoad() {
         super.viewDidLoad()
 //        appController.cleanIpsDataBase()
-        appController.delegate = self
+        appController.appAlivedelegate = self
         appController.fireWall.showConections()
         
     }
     
     
-//    override func viewDidAppear() {
-//        super.viewDidAppear()
-//
-//    }
-    
-    
-    
-    
+ 
     
     
     //MARK: --------  AppController Delegate  ---------------
@@ -81,26 +57,8 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     }
     
     
+  
     
-    
-    func blocked(ips:[ConectionNode]) {
-        blockedIps = ips
-        fireWallTableView.reloadData()
-    }
-    
-    func fireWall(state:Bool) {
-//        print("fireWall(state running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-        if state == true {
-//            fireWallStateImage.backgroundColor = .green
-//            startStopButton.title = "STOP FIREWALL"
-            //
-        }else {
-//            fireWallStateImage.backgroundColor = .red
-//            startStopButton.title = "START FIREWALL"
-            //
-        }
-        //         appController.fireWall.showConections()
-    }
     
     
     

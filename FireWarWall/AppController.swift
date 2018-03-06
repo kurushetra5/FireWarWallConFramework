@@ -9,8 +9,13 @@
 import Foundation
 
 
-protocol  AppControllerDelegate {
+protocol AppAliveConectionsDelegate {
     func alive(conections:ConectionNode)
+    
+    
+}
+
+protocol AppFireWallDelegate {
     func blocked(ips:[ConectionNode])
     func fireWall(state:Bool)
     
@@ -18,13 +23,13 @@ protocol  AppControllerDelegate {
 
 
 
-class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
+final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
-    init() {
-        configureFireWall()
-    }
-    //    static let shared = AppController()
-    var delegate:AppControllerDelegate!
+    
+    static let shared = AppController()
+    
+    var appAlivedelegate:AppAliveConectionsDelegate!
+    var appFireWallDelegate:AppFireWallDelegate!
     
     var fireWall:FireWall = FireWall()
     var dataBase:dataBaseManager = dataBaseManager()
@@ -32,7 +37,11 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
     
     
-    func configureFireWall() {
+    init() {
+        setDelegates()
+    }
+    
+    func setDelegates() {
         fireWall.fireWallDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
@@ -41,15 +50,27 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
     
     
+   //MARK: -------- FIREWALL ---------------
+    
+   public func  startFireWall() {
+        fireWall.start()
+    }
+   public func  stopFireWall() {
+        fireWall.stop()
+    }
+   public func  unblockIp() {
+        
+    }
     
     
     
     
+    //MARK: -------- DATABASE ---------------
     func checkDataBaseFor(conection:NetStatConection) {
         
         if let node = dataBase.isInDataBase(ip:conection) {
             DispatchQueue.main.sync {
-                delegate?.alive(conections:node)
+                appAlivedelegate?.alive(conections:node)
             }
             
             
@@ -64,10 +85,10 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         dataBase.cleanDataBase()
     }
     
+ 
     
-//    func locationFor(ip:String) {
-//
-//    }
+    
+    
     
     
     
@@ -92,7 +113,7 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
     
     func fireWallBlocked(ips:[ConectionNode]) {
-        delegate?.blocked(ips:ips)
+        appFireWallDelegate?.blocked(ips:ips)
     }
     
     
@@ -101,9 +122,10 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     func fireWall(state:Bool) {
         //         print("fireWall running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
         DispatchQueue.main.sync {
-            delegate?.fireWall(state:state)
+            appFireWallDelegate?.fireWall(state:state)
         }
     }
+    
     
     
     
@@ -124,6 +146,9 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
     
     
+    
+    
+    
     //MARK: --------  ipLocationDelegate ---------------
     func ipLocationReady(ipLocation:NetStatConection) {
         
@@ -141,7 +166,7 @@ class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     func filled(node:ConectionNode) {
         
         if node.conected == true {
-           self.delegate?.alive(conections:node)
+           self.appAlivedelegate?.alive(conections:node)
         }
         
         
