@@ -35,6 +35,7 @@ class FireWall: ComandRunerDelegate {
     private var ipsManager:IpsManager = IpsManager()
     private var needUpdateState:Bool = false
     private var needUpdateConections:Bool = false
+    private var needUpdateBlockedIps:Bool = false
     private var isTimerRuning:Bool = false
     var fireWallDelegate:FireWallDelegate!
     
@@ -53,7 +54,7 @@ class FireWall: ComandRunerDelegate {
     public func showConections() {
         needUpdateConections = true
         
-        if isTimerRuning == false {
+        if !isTimerRuning  {
             backgroundTimer()
         }
         
@@ -65,7 +66,7 @@ class FireWall: ComandRunerDelegate {
     public func state()  {
         needUpdateState = true
         
-        if isTimerRuning == false {
+        if !isTimerRuning  {
             backgroundTimer()
         }
     }
@@ -76,19 +77,40 @@ class FireWall: ComandRunerDelegate {
     
     
     func start() {
- 
+      comandRuner.runComand(type:.fireWallStart, ip: nil)
     }
     
     func stop() {
- 
+      comandRuner.runComand(type:.fireWallStop, ip: nil)
     }
     
+    
+    func showBlockedIpsOn() {
+          needUpdateBlockedIps = true
+        
+        if !isTimerRuning  {
+            backgroundTimer()
+        }
+       
+        
+    }
+    func showBlockedIpsOff() {
+        
+        needUpdateBlockedIps = false
+        
+        if !isTimerRuning  {
+            backgroundTimer()
+        }
+        
+    }
+    
+    
     func block(ip:String) {
- 
+         comandRuner.runComand(type:.addFireWallBadHosts, ip:ip)
     }
     
     func unBlock(ip:String) {
-        
+        comandRuner.runComand(type:.deleteFireWallBadHosts, ip:ip)
     }
     func showBlockedIps() {
         
@@ -155,11 +177,20 @@ class FireWall: ComandRunerDelegate {
         }
         
         if needUpdateConections {
-            let queue2 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+            let queue2 = DispatchQueue(label: "com.knowstack.queue2", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
             queue2.sync {
                 
                 self.comandRuner.runComand(type:.netStat, ip: nil)
                 print("Conections ...")
+            }
+        }
+        
+        if needUpdateBlockedIps {
+            let queue3 = DispatchQueue(label: "com.knowstack.queue3", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+            queue3.sync {
+                
+                self.comandRuner.runComand(type:.fireWallBadHosts, ip: nil)
+                print("Blocked ips ...")
             }
         }
     }
@@ -176,11 +207,18 @@ class FireWall: ComandRunerDelegate {
             }else if result.contains("Enabled"){
                 fireWallDelegate?.fireWall(state:true)
             }
-        }else {
+        }
+        
+        
+        else if result.contains("tcp4") {
             let conections =   ipsManager.findNetStatIps(inText: result)
             fireWallDelegate?.fireWallEstablished(ips:conections)
         }
-        
+        else   {
+             let badHosts =   ipsManager.findBlockedIps(inText: result)
+            print(badHosts)
+//            fireWallDelegate?.fireWallEstablished(ips:conections)
+        }
         
     }
     

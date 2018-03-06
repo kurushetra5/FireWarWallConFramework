@@ -75,8 +75,18 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         fireWall.stop()
     }
     
-   public func  unblockIp() {
-        
+    func showBlockedIpsOn() {
+        fireWall.showBlockedIpsOn()
+    }
+    func showBlockedIpsOff() {
+        fireWall.showBlockedIpsOff()
+    }
+    
+    public func block(ip:ConectionNode) {
+        fireWall.block(ip: ip.ip!)
+    }
+    public func unblock(ip:ConectionNode) {
+        fireWall.unBlock(ip:ip.ip!)
     }
     
     

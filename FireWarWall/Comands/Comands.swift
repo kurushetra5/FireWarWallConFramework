@@ -70,7 +70,7 @@ struct FireWallState:Comand  {
 
 struct FireWallBadHosts:Comand  {
     var taskPath:String =  "/bin/sh"
-    var taskArgs:[String] = ["-c" , "echo nomeacuerdo8737 | sudo -S pfctl -t badhosts -T show"]
+    var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S pfctl -t badhosts -T show"]
     
 }
 
@@ -79,7 +79,7 @@ struct AddFireWallBadHosts:ComandIp  {
     
     var ip:String = ""
     var taskPath:String =  "/bin/sh"
-    var taskArgs:[String] = ["-c" , "echo nomeacuerdo8737 | sudo -S pfctl  -t badhosts -T add ???"]
+    var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S pfctl  -t badhosts -T add ???"]
     
     
     init(withIp:String) {
@@ -100,7 +100,7 @@ struct DeleteFireWallBadHosts:ComandIp  {
     
     var ip:String = ""
     var taskPath:String =  "/bin/sh"
-    var taskArgs:[String] = ["-c" , "echo nomeacuerdo8737 | sudo -S pfctl  -t badhosts -T delete ???"]
+    var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S pfctl  -t badhosts -T delete ???"]
     
     
     init(withIp:String) {

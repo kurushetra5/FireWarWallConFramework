@@ -731,7 +731,7 @@
                 </viewController>
                 <customObject id="zWN-xf-b4S" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915" y="-176"/>
+            <point key="canvasLocation" x="754" y="-145"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -1191,7 +1191,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="backgroundLabel" destination="Q59-kv-QmU" id="AUD-ac-ZWS"/>
+                        <outlet property="background" destination="lJI-e4-Z1m" id="ZID-30-mFY"/>
                         <outlet property="fireWallTableView" destination="iqj-qu-mjV" id="Ews-in-Zcr"/>
                         <outlet property="startStopButton" destination="iWX-d5-SzY" id="6pt-Vn-EXV"/>
                     </connections>
@@ -1382,7 +1382,7 @@
                 </viewController>
                 <customObject id="jmb-4k-Qy1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-179" y="-176"/>
+            <point key="canvasLocation" x="-364" y="-153"/>
         </scene>
     </scenes>
     <resources>

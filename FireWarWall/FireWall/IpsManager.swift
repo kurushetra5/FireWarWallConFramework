@@ -12,18 +12,48 @@ import Foundation
 class IpsManager  {
     
     
-    func findIpsIn(text:String) -> [String]! {
+//    func findIpsIn(text:String) -> [String]! {
+//
+//        let ips = findIP(inText:text)
+//
+//        if ips.count >= 1 {
+//            return ips
+//        }else {
+//            return nil
+//        }
+//    }
+    
+    
+    
+    //MARK: -------------------- BLOCKED -----------------------------
+    func findBlockedIps(inText:String) -> [NetStatConection] {
         
-        let ips = findIP(inText:text)
+        var arrayBlocked:[NetStatConection] = []
+        let blocked = inText.components(separatedBy: "\n")
         
-        if ips.count >= 1 {
-            return ips
-        }else {
-            return nil
+        for ip in blocked {
+           
+            if ip.count >= 1 {
+               var finded = findIP(inText:ip)
+                if finded.count >= 0 {
+                    if isValid(ip:finded[0]) {
+                        var  conection:NetStatConection = NetStatConection()
+                        conection.sourceIp = finded[0]
+                        arrayBlocked.append(conection)
+//                        print(finded[0])
+                    }
+                }
+            }
         }
+        
+        
+        return arrayBlocked
     }
     
     
+    
+    
+    //MARK: -------------------- NETSTAT -----------------------------
     
     func findNetStatIps(inText:String) -> [NetStatConection] {
         
@@ -46,23 +76,6 @@ class IpsManager  {
         }
       return conectionsFinal
     }
-    
-    
-    
-    func isLocal(ip:String) -> Bool {
-        
-        if ip == "127.0.0.1" {
-            return true
-        } else  if ip == "192.168.8.1" {
-            return true
-        }else  if ip == "192.168.8.100" {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    
     
     func parseLine(line:String)  -> NetStatConection {
         
@@ -95,16 +108,42 @@ class IpsManager  {
     
     
     
+    func isLocal(ip:String) -> Bool {
+        
+        if ip == "127.0.0.1" {
+            return true
+        } else  if ip == "192.168.8.1" {
+            return true
+        }else  if ip == "192.168.8.100" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    
+    func isValid(ip: String) -> Bool {
+        let parts = ip.components(separatedBy:".")
+        let numbers = parts.flatMap { Int($0) }
+        return parts.count == 4 && numbers.count == 4 && !numbers.contains {$0 < 0 || $0 > 255}
+    }
+    
+    
+    
+    
+    
+    
+    
     func findIP(inText:String) -> [String] {
         let text2 = inText.replacingOccurrences(of:" ", with:"")
         var arrayNumbers:[String] = []
         var text3:String = ""
         for cha in text2 {
-            
+
             let number = Int(cha.description)
-            
+
             if number != nil {
-                
+
                 text3.append(cha)
             }else  if cha == "." {
                 text3.append(cha)
@@ -114,7 +153,7 @@ class IpsManager  {
         }
         arrayNumbers = text3.components(separatedBy:"-")
         var arrayN:[String] = []
-        
+
         for  num in  arrayNumbers.indices {
             if arrayNumbers[num].count >= 7 {
                 if isValid(ip:arrayNumbers[num]) {
@@ -128,10 +167,6 @@ class IpsManager  {
     
     
     
-    func isValid(ip: String) -> Bool {
-        let parts = ip.components(separatedBy:".")
-        let numbers = parts.flatMap { Int($0) }
-        return parts.count == 4 && numbers.count == 4 && !numbers.contains {$0 < 0 || $0 > 255}
-    }
+    
     
 }

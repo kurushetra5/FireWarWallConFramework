@@ -13,7 +13,7 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     
     
     
-    @IBOutlet weak var backgroundLabel: NSTextField!
+    @IBOutlet weak var background: NSTextField!
     @IBOutlet weak var fireWallTableView: NSTableView!
     @IBOutlet weak var startStopButton: NSButton!
     
@@ -35,7 +35,7 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     }
     
     @IBAction func unblockIp(_ sender: NSButton) {
-        appController.unblockIp()
+//        appController.unblockIp()
        
     }
     
@@ -59,11 +59,13 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
         appController.appFireWallDelegate = self
         appController.fireWallState()
         
+        
     }
     
     override func viewWillDisappear() {
          super.viewWillDisappear()
          appController.fireWallStateOff()
+         appController.showBlockedIpsOff()
     }
     
     
@@ -73,6 +75,7 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     
     func blocked(ips:[ConectionNode]) {
         blockedIps = ips
+        print(blockedIps)
         fireWallTableView.reloadData()
     }
     
@@ -80,12 +83,13 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     func fireWall(state:Bool) {
         
         if state == true {
-            backgroundLabel.backgroundColor = .green
-            startStopButton.title = "STOP FIREWALL"
+            appController.showBlockedIpsOn()
+            background.backgroundColor = .green
+            startStopButton.title = "STOP"
             
         }else {
-            backgroundLabel.backgroundColor = .red
-            startStopButton.title = "START FIREWALL"
+            background.backgroundColor = .red
+            startStopButton.title = "START"
           
         }
         

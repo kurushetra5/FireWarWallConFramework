@@ -11,26 +11,26 @@ import Cocoa
 
 class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AppAliveConectionsDelegate  {
     
+    
+    
     //MARK: -------- @@IBOutlet  ---------------
-    @IBOutlet weak var blockOrUnblockButton: NSButton!
-    @IBOutlet weak var blockipText: NSTextField!
-    @IBOutlet weak var fireWallTableView: NSTableView!
-    @IBOutlet weak var netstatTableView: NSTableView!
-    @IBOutlet weak var fireWallStateImage: NSTextField!
-    @IBOutlet weak var startStopButton: NSButton!
+   @IBOutlet weak var netstatTableView: NSTableView!
+ 
+ 
     
-    
-    //MARK: -------- @IBAction  ---------------
+  //MARK: -------- @IBAction  ---------------
     @IBAction func  blockIp(_ sender: NSButton) {
-//        appController.fireWall.block(ip:"12.23.23.2")
-//        appController.cleanIpsDataBase()
+        if selectedIP != nil {
+           appController.block(ip:selectedIP)
+        }
     }
+    
     
     
     //MARK: -------- Class VARS  ---------------
     var appController:AppController = AppController.shared
     var aliveConections:[ConectionNode] = []
- 
+    private var selectedIP:ConectionNode!
     
     
     
@@ -124,7 +124,10 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        
+        selectedIP = aliveConections[netstatTableView.selectedRow]
+         print(selectedIP.city ?? "nada")
     }
+    
+    
 }
 
