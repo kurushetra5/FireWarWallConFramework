@@ -926,13 +926,12 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="blockOrUnblockIp:" target="XfG-lQ-9wD" id="PPh-OZ-XmW"/>
+                                    <action selector="blockIp:" target="XfG-lQ-9wD" id="LN1-MK-7gC"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="blockOrUnblockButton" destination="lb6-3H-HVs" id="vE7-tM-F8y"/>
                         <outlet property="netstatTableView" destination="8Qe-jE-pXd" id="byz-sf-bVZ"/>
                     </connections>
                 </viewController>

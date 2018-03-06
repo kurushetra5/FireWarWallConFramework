@@ -33,17 +33,30 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
  
     
     
+    
+    
+    
     //MARK: -------- Life Circle  ---------------
     override func viewDidLoad() {
         super.viewDidLoad()
 //        appController.cleanIpsDataBase()
         appController.appAlivedelegate = self
-        appController.fireWall.showConections()
+        appController.showConections()
         
     }
     
-    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        appController.showConectionsOff()
+    }
  
+    
+    
+    
+    
+    
+    
+    
     
     
     //MARK: --------  AppController Delegate  ---------------

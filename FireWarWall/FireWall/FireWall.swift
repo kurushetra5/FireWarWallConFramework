@@ -33,25 +33,47 @@ class FireWall: ComandRunerDelegate {
     //MARK: --------  Class  VARS  ---------------
     private var comandRuner:ComandRuner = ComandRuner()
     private var ipsManager:IpsManager = IpsManager()
+    private var needUpdateState:Bool = false
+    private var needUpdateConections:Bool = false
+    private var isTimerRuning:Bool = false
     var fireWallDelegate:FireWallDelegate!
     
     
     
     init() {
         comandRuner.comandRunerDelegate = self
+        
     }
+    
     
     
     
     //MARK: --------  Public Funcs  ---------------
     
-    func showConections() {
-        backgroundTimer()
+    public func showConections() {
+        needUpdateConections = true
+        
+        if isTimerRuning == false {
+            backgroundTimer()
+        }
+        
+    }
+    public func showConectionsOff()  {
+        needUpdateConections = false
     }
     
     public func state()  {
+        needUpdateState = true
         
+        if isTimerRuning == false {
+            backgroundTimer()
+        }
     }
+    
+    public func stateOff()  {
+        needUpdateState = false
+    }
+    
     
     func start() {
  
@@ -99,7 +121,8 @@ class FireWall: ComandRunerDelegate {
   //MARK: --------    Funcs  ---------------
     
    private func backgroundTimer()  {
-        
+    isTimerRuning = true
+    
         DispatchQueue.global(qos:.background).async{
             let timer:Foundation.Timer = Foundation.Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.backgroundTimerAction(_:)), userInfo: nil, repeats: true);
 //            print("State Timer  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
@@ -121,19 +144,27 @@ class FireWall: ComandRunerDelegate {
     
     public func runComands() {
         
-//        let queue1 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
-        let queue2 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
         
-//        queue1.sync {
-//
-//            self.comandRuner.runComand(type:.fireWallState, ip: nil)
-//        }
-        queue2.sync {
-            
-            self.comandRuner.runComand(type:.netStat, ip: nil)
+        if needUpdateState {
+            let queue1 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+            queue1.sync {
+                
+                self.comandRuner.runComand(type:.fireWallState, ip: nil)
+                print("State ...")
+            }
         }
         
+        if needUpdateConections {
+            let queue2 = DispatchQueue(label: "com.knowstack.queue1", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit, target: DispatchQueue.global())
+            queue2.sync {
+                
+                self.comandRuner.runComand(type:.netStat, ip: nil)
+                print("Conections ...")
+            }
+        }
     }
+    
+    
     
     
     func parseComand(result:String)  {

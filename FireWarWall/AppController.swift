@@ -52,12 +52,29 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
    //MARK: -------- FIREWALL ---------------
     
+    public func showConections()  {
+        fireWall.showConections()
+    }
+    
+    public func showConectionsOff()  {
+        fireWall.showConectionsOff()
+    }
+    
+   public func  fireWallState() {
+        fireWall.state()
+    }
+    public func  fireWallStateOff() {
+        fireWall.stateOff()
+    }
+    
    public func  startFireWall() {
         fireWall.start()
     }
+    
    public func  stopFireWall() {
         fireWall.stop()
     }
+    
    public func  unblockIp() {
         
     }

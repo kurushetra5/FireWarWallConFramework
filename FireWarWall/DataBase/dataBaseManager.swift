@@ -166,7 +166,7 @@ class dataBaseManager  {
         
         do {
             let searchResults = try managedContext.fetch(fetchRequest)
-            print ("num of results = \(searchResults.count)")
+//            print ("num of results = \(searchResults.count)")
             
             if searchResults.count >= 2 {
                 print("Duplicate Ip found")

@@ -57,9 +57,14 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     override func viewDidLoad() {
         super.viewDidLoad()
         appController.appFireWallDelegate = self
+        appController.fireWallState()
         
     }
     
+    override func viewWillDisappear() {
+         super.viewWillDisappear()
+         appController.fireWallStateOff()
+    }
     
     
     
