@@ -9,34 +9,42 @@
 import Foundation
 
 
+protocol  PraserManagerDelegate  {
+    func prased(data:Any,fromComand:ComandType)
+}
+
+
+
 class  praserManager {
     
     
     private var ipsManager:IpsManager = IpsManager()
+    public var praserManagerDelegate:PraserManagerDelegate!
     
     
     
     
-    
-    func parseComand(result:String ,completion:(ComandType,Any) -> Void)  {
+    func parseComand(result:String)  {
         
         if result.contains("Status") {
             if result.contains("Disabled") {
 //                fireWallDelegate?.fireWall(state:false)
-                completion(.fireWallState,false)
+                praserManagerDelegate?.prased(data:false, fromComand:.fireWallState)
+                
             }else if result.contains("Enabled"){
 //                fireWallDelegate?.fireWall(state:true)
-                completion(.fireWallState,true)
+               praserManagerDelegate?.prased(data:true, fromComand:.fireWallState)
             }
         }
         else if result.contains("tcp4") {
             let conections =   ipsManager.findNetStatIps(inText: result)
+            praserManagerDelegate?.prased(data:conections, fromComand:.netStat)
 //            fireWallDelegate?.fireWallEstablished(ips:conections)
-            completion(.netStat,conections)
+           
         }
-        else   {
+        else   { //FIXME: no esta acabado todavia ????
             let badHosts =   ipsManager.findBlockedIps(inText: result)
-            completion(.fireWallBadHosts,badHosts)
+            praserManagerDelegate?.prased(data:badHosts, fromComand:.fireWallBadHosts)
             //            print(badHosts)
             //            fireWallDelegate?.fireWallBlocked(ips:badHosts) //TODO: crear varios delegates
         }

@@ -25,6 +25,7 @@
 		61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */; };
 		61D79AC52034E0CD00CE226B /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D79AC42034E0CD00CE226B /* AppController.swift */; };
 		61FD1C4C2051BC0000E69A63 /* praserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FD1C4B2051BC0000E69A63 /* praserManager.swift */; };
+		61FD1C4E2052082200E69A63 /* ComandsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FD1C4D2052082200E69A63 /* ComandsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		61D79AC42034E0CD00CE226B /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		61FD1C4B2051BC0000E69A63 /* praserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = praserManager.swift; sourceTree = "<group>"; };
+		61FD1C4D2052082200E69A63 /* ComandsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComandsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				61937D3D202B2A98007BA376 /* AppDelegate.swift */,
-				61D79AC42034E0CD00CE226B /* AppController.swift */,
 				61AC55A7204F217D00FB2492 /* ViewControllers */,
-				61AC55A8204F219500FB2492 /* FireWall */,
+				61AC55A8204F219500FB2492 /* Managers */,
 				61AC55A5204F20E100FB2492 /* DataBase */,
 				61AC55A6204F217100FB2492 /* Comands */,
 				61937D46202B2A98007BA376 /* Main.storyboard */,
@@ -109,9 +110,12 @@
 		61AC55A6204F217100FB2492 /* Comands */ = {
 			isa = PBXGroup;
 			children = (
+				61937D50202B50B4007BA376 /* FireWall.swift */,
+				61FD1C4D2052082200E69A63 /* ComandsManager.swift */,
+				61FD1C4B2051BC0000E69A63 /* praserManager.swift */,
+				61937D52202B6164007BA376 /* IpsManager.swift */,
 				613F0A64204B43F70017B8DC /* Comands.swift */,
 				613F0A62204B43DD0017B8DC /* Comand.swift */,
-				61FD1C4B2051BC0000E69A63 /* praserManager.swift */,
 			);
 			path = Comands;
 			sourceTree = "<group>";
@@ -126,15 +130,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		61AC55A8204F219500FB2492 /* FireWall */ = {
+		61AC55A8204F219500FB2492 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				61937D50202B50B4007BA376 /* FireWall.swift */,
+				61D79AC42034E0CD00CE226B /* AppController.swift */,
 				616FF59A2050A88400681E63 /* InfoComandsManager.swift */,
-				61937D52202B6164007BA376 /* IpsManager.swift */,
 				61C4DEC52032508A00727032 /* IPLocator.swift */,
 			);
-			path = FireWall;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +226,7 @@
 				616FF59B2050A88400681E63 /* InfoComandsManager.swift in Sources */,
 				61C4DEC62032508A00727032 /* IPLocator.swift in Sources */,
 				61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */,
+				61FD1C4E2052082200E69A63 /* ComandsManager.swift in Sources */,
 				61937D51202B50B4007BA376 /* FireWall.swift in Sources */,
 				61D79AC52034E0CD00CE226B /* AppController.swift in Sources */,
 				61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */,

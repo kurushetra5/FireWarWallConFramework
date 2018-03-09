@@ -11,7 +11,7 @@ import Foundation
 
 //MARK: --------  Prorocol Delegate  ---------------
 protocol FireWallDelegate {
-    func fireWallEstablished(conections:[ConectionNode])
+//    func fireWallEstablished(conections:[ConectionNode])
     func fireWallEstablished(ips:[NetStatConection])
     func fireWallBlocked(ips:[NetStatConection])
     func fireWall(state:Bool)
@@ -32,7 +32,7 @@ class FireWall: ComandRunerDelegate {
     
     
     //MARK: --------  Class  VARS  ---------------
-    private var comandRuner:ComandRuner = ComandRuner()
+    public var comandRuner:ComandRuner = ComandRuner()
     private var ipsManager:IpsManager = IpsManager()
     private var needUpdateState:Bool = false
     private var needUpdateConections:Bool = false
@@ -44,9 +44,12 @@ class FireWall: ComandRunerDelegate {
     
     
     init() {
-        comandRuner.comandRunerDelegate = self //FIXME: dosobjetos de lo mismo delegados se mezclan las cosas .....
+//        comandRuner.comandRunerDelegate = self //FIXME: dosobjetos de lo mismo delegados se mezclan las cosas .....
         
     }
+    
+    
+    
     
     
     

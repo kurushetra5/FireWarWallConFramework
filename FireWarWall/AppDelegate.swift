@@ -8,19 +8,43 @@
 
 import Cocoa
 
+
+//extension NSViewController {
+//
+//    var appCont:AppController {
+//
+//        var appDelegate = NSApplication.shared.delegate as? AppDelegate
+//        return appDelegate!.appController
+//    }
+//}
+//
+
+
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    
+//    var appController:AppController = AppController()
+    
 
-
+    
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+ 
+//        appController.applicationDidFinishLaunching
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
+    
+    
+    
+    
+    
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

@@ -10,7 +10,7 @@ import Cocoa
 
 
 
-class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource , AppFireWallDelegate{
+class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource , FireWallDelegateState,FireWallDelegateBlocked {
     
     
     
@@ -28,16 +28,16 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     @IBAction func startOrStopFirewall(_ sender: NSButton) {
         
         if sender.state == .off {
-            appController.startFireWall()
+             appController.startFireWall()
             
         }else {
-            appController.stopFireWall()
+             appController.stopFireWall()
             
         }
     }
     
     @IBAction func unblockIp(_ sender: NSButton) {
-          appController.unblock(ip:selectedIP)
+           appController.unblock(ip:selectedIP)
        
     }
     
@@ -57,17 +57,27 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     //MARK: -------- Life Circle  ---------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        appController.appFireWallDelegate = self
-        appController.fireWallState()
+        setUpDelegates()
+         appController.fireWallState()
         
         
     }
     
     override func viewWillDisappear() {
          super.viewWillDisappear()
-         appController.fireWallStateOff()
-         appController.showBlockedIpsOff()
+          appController.fireWallStateOff()
+          appController.showBlockedIpsOff()
     }
+    
+    
+    
+    
+    //MARK: -------- Configuration  ---------------
+    func setUpDelegates() {
+          appController.fireWallDelegateState = self
+         appController.fireWallDelegateBlocked = self
+    }
+    
     
     
     
@@ -86,7 +96,7 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     func fireWall(state:Bool) {
         
         if state == true {
-            appController.showBlockedIpsOn()
+             appController.showBlockedIpsOn()
             background.backgroundColor = .green
             startStopButton.title = "STOP"
             

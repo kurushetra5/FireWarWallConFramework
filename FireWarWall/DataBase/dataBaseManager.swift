@@ -23,7 +23,7 @@ protocol dataBaseDelegate {
 
 class dataBaseManager  {
     
-    let appDelegate = NSApplication.shared.delegate  as! AppDelegate
+    var applicationDelegate = NSApplication.shared.delegate  as? AppDelegate
     let managedContext:NSManagedObjectContext!
  
     var ipLocator:IPLocator = IPLocator()
@@ -38,7 +38,7 @@ class dataBaseManager  {
     
     
     init() {
-        managedContext = self.appDelegate.persistentContainer.viewContext
+        managedContext =  applicationDelegate?.persistentContainer.viewContext
         resetAllConections()
     }
     

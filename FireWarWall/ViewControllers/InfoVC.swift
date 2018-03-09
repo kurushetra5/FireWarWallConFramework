@@ -11,7 +11,7 @@ import Cocoa
 
 
     
-class InfoVC: NSViewController,AppInfoComandsDelegate {
+class InfoVC: NSViewController,InfoComandsDelegate {
 
     
     @IBOutlet var infoTextView: NSTextView!
@@ -24,28 +24,28 @@ class InfoVC: NSViewController,AppInfoComandsDelegate {
         switch  sender.tag {
         case 0:
             print("Whois")
-            appController.runInfo(comand:.whois)
+             appController.runInfo(comand:.whois)
         case 1:
             print("NSLookUP")
             appController.runInfo(comand:.nsLookup)
         case 2:
             print("Dig")
-             appController.runInfo(comand:.dig)
+              appController.runInfo(comand:.dig)
         case 3:
             print("TraceRoute")
-            appController.runInfo(comand:.traceRoute)
+             appController.runInfo(comand:.traceRoute)
         case 4:
             print("Ping")
-             appController.runInfo(comand:.ping)
+              appController.runInfo(comand:.ping)
         case 5:
             print("Ports/Services")
-             appController.runInfo(comand:.ports_Services)
+              appController.runInfo(comand:.ports_Services)
         case 6:
             print("ConectionData")
-             appController.runInfo(comand:.conectionData)
+              appController.runInfo(comand:.conectionData)
         case 7:
             print("History")
-            appController.runInfo(comand:.history)
+             appController.runInfo(comand:.history)
         default:
             print("default")
         }
@@ -55,7 +55,7 @@ class InfoVC: NSViewController,AppInfoComandsDelegate {
     
     
     //MARK: -------- Class VARS  ---------------
-    var appController:AppController = AppController.shared
+     var appController:AppController = AppController.shared
     
     
     
@@ -63,9 +63,19 @@ class InfoVC: NSViewController,AppInfoComandsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       appController.appInfoComandsDelegate = self
+        setUpDelegates()
        
     }
+    
+    
+    
+    //MARK: -------- Configuration  ---------------
+    func setUpDelegates() {
+         appController.infoComandsDelegate = self
+    }
+    
+    
+    
     
     
     

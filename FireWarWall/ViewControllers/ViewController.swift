@@ -9,8 +9,10 @@
 import Cocoa
 
 
-class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AppAliveConectionsDelegate  {
+class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AliveConectionsDelegate  {
     
+    
+    var appController:AppController = AppController.shared
     
     
     //MARK: -------- @@IBOutlet  ---------------
@@ -18,17 +20,18 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
  
  
     
+    
   //MARK: -------- @IBAction  ---------------
     @IBAction func  blockIp(_ sender: NSButton) {
         if selectedIP != nil {
-           appController.block(ip:selectedIP)
+             appController.block(ip:selectedIP)
         }
     }
     
     
     
     //MARK: -------- Class VARS  ---------------
-    var appController:AppController = AppController.shared
+ 
     var aliveConections:[ConectionNode] = []
     private var selectedIP:ConectionNode!
     
@@ -39,19 +42,21 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     //MARK: -------- Life Circle  ---------------
     override func viewDidLoad() {
         super.viewDidLoad()
-//        appController.cleanIpsDataBase()
-        appController.appAlivedelegate = self
+        setUpDelegates()
         appController.showConections()
         
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        appController.showConectionsOff()
+         appController.showConectionsOff()
     }
  
     
-    
+      //MARK: -------- Configuration  ---------------
+    func setUpDelegates() {
+         appController.appAlivedelegate = self
+    }
     
     
     
@@ -60,6 +65,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     //MARK: --------  AppController Delegate  ---------------
+    
     func alive(conections:ConectionNode) {
         
         if !aliveConections.contains(conections) {
