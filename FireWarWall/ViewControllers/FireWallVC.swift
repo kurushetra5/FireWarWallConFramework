@@ -9,6 +9,7 @@
 import Cocoa
 
 
+
 class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource , AppFireWallDelegate{
     
     
@@ -16,6 +17,7 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     @IBOutlet weak var background: NSTextField!
     @IBOutlet weak var fireWallTableView: NSTableView!
     @IBOutlet weak var startStopButton: NSButton!
+    
     
     
     
@@ -35,7 +37,7 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     }
     
     @IBAction func unblockIp(_ sender: NSButton) {
-//        appController.unblockIp()
+          appController.unblock(ip:selectedIP)
        
     }
     
@@ -46,9 +48,8 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     
     //MARK: -------- Class VARS  ---------------
     var appController:AppController = AppController.shared
-    var blockedIps:[ConectionNode] = []
     var blockedConections:[ConectionNode] = []
-    
+    private var selectedIP:ConectionNode!
     
     
     
@@ -74,9 +75,11 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     //MARK: -------- APPFireWall Delegates   ---------------
     
     func blocked(ips:[ConectionNode]) {
-        blockedIps = ips
-        print(blockedIps)
-        fireWallTableView.reloadData()
+         if blockedConections != ips {
+           print("No Equals..")
+            blockedConections = ips
+            fireWallTableView.reloadData()
+        }
     }
     
     
@@ -146,6 +149,8 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         
+        selectedIP = blockedConections[fireWallTableView.selectedRow] //FIXME: falla al seleccionas nada.
+//        print(selectedIP.city ?? "nada")
     }
     
 }

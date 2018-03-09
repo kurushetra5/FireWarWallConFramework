@@ -54,7 +54,7 @@ class   IPLocator  {
                 //TODO: delegate message error
             }else{
                 do{
-                    let node = try decoder.decode(IPLocation.self, from: data!) //TODO: no recoger ips locales..
+                    let node = try decoder.decode(IPLocation.self, from: data!)
 //                     print(node)
                     var conectionFull:NetStatConection = conection
                     conectionFull.ipLocation = node

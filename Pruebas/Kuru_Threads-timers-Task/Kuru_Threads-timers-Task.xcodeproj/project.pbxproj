@@ -1,0 +1,354 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6165817C2048B2C6007D3D9F /* TaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165817B2048B2C6007D3D9F /* TaskOperation.swift */; };
+		6165817E2048B32F007D3D9F /* NetStatOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165817D2048B32F007D3D9F /* NetStatOperation.swift */; };
+		616581802048BAAF007D3D9F /* FireWallStateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6165817F2048BAAF007D3D9F /* FireWallStateOperation.swift */; };
+		616581822048BB5C007D3D9F /* SystemComandOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616581812048BB5C007D3D9F /* SystemComandOperation.swift */; };
+		616581842048BBE5007D3D9F /* ParseNetStatOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616581832048BBE5007D3D9F /* ParseNetStatOperation.swift */; };
+		616581862048BC21007D3D9F /* ParseFireWallStateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616581852048BC21007D3D9F /* ParseFireWallStateOperation.swift */; };
+		616581892048C196007D3D9F /* NetStatQueues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616581882048C196007D3D9F /* NetStatQueues.swift */; };
+		61E4B9AA20461EC300FC3F7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4B9A920461EC300FC3F7E /* AppDelegate.swift */; };
+		61E4B9AC20461EC300FC3F7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4B9AB20461EC300FC3F7E /* ViewController.swift */; };
+		61E4B9AE20461EC300FC3F7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61E4B9AD20461EC300FC3F7E /* Assets.xcassets */; };
+		61E4B9B120461EC300FC3F7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61E4B9AF20461EC300FC3F7E /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6165817B2048B2C6007D3D9F /* TaskOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOperation.swift; sourceTree = "<group>"; };
+		6165817D2048B32F007D3D9F /* NetStatOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStatOperation.swift; sourceTree = "<group>"; };
+		6165817F2048BAAF007D3D9F /* FireWallStateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWallStateOperation.swift; sourceTree = "<group>"; };
+		616581812048BB5C007D3D9F /* SystemComandOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemComandOperation.swift; sourceTree = "<group>"; };
+		616581832048BBE5007D3D9F /* ParseNetStatOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseNetStatOperation.swift; sourceTree = "<group>"; };
+		616581852048BC21007D3D9F /* ParseFireWallStateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseFireWallStateOperation.swift; sourceTree = "<group>"; };
+		616581882048C196007D3D9F /* NetStatQueues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStatQueues.swift; sourceTree = "<group>"; };
+		61E4B9A620461EC300FC3F7E /* Kuru_Threads-timers-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kuru_Threads-timers-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61E4B9A920461EC300FC3F7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		61E4B9AB20461EC300FC3F7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		61E4B9AD20461EC300FC3F7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61E4B9B020461EC300FC3F7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		61E4B9B220461EC300FC3F7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61E4B9B320461EC300FC3F7E /* Kuru_Threads_timers_Task.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kuru_Threads_timers_Task.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61E4B9A320461EC300FC3F7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		616581872048BC44007D3D9F /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				6165817D2048B32F007D3D9F /* NetStatOperation.swift */,
+				6165817F2048BAAF007D3D9F /* FireWallStateOperation.swift */,
+				616581812048BB5C007D3D9F /* SystemComandOperation.swift */,
+				616581832048BBE5007D3D9F /* ParseNetStatOperation.swift */,
+				616581852048BC21007D3D9F /* ParseFireWallStateOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		61E4B99D20461EC300FC3F7E = {
+			isa = PBXGroup;
+			children = (
+				61E4B9A820461EC300FC3F7E /* Kuru_Threads-timers-Task */,
+				61E4B9A720461EC300FC3F7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61E4B9A720461EC300FC3F7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61E4B9A620461EC300FC3F7E /* Kuru_Threads-timers-Task.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61E4B9A820461EC300FC3F7E /* Kuru_Threads-timers-Task */ = {
+			isa = PBXGroup;
+			children = (
+				61E4B9A920461EC300FC3F7E /* AppDelegate.swift */,
+				61E4B9AB20461EC300FC3F7E /* ViewController.swift */,
+				61E4B9AD20461EC300FC3F7E /* Assets.xcassets */,
+				61E4B9AF20461EC300FC3F7E /* Main.storyboard */,
+				61E4B9B220461EC300FC3F7E /* Info.plist */,
+				61E4B9B320461EC300FC3F7E /* Kuru_Threads_timers_Task.entitlements */,
+				6165817B2048B2C6007D3D9F /* TaskOperation.swift */,
+				616581872048BC44007D3D9F /* Operations */,
+				616581882048C196007D3D9F /* NetStatQueues.swift */,
+			);
+			path = "Kuru_Threads-timers-Task";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61E4B9A520461EC300FC3F7E /* Kuru_Threads-timers-Task */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61E4B9B620461EC300FC3F7E /* Build configuration list for PBXNativeTarget "Kuru_Threads-timers-Task" */;
+			buildPhases = (
+				61E4B9A220461EC300FC3F7E /* Sources */,
+				61E4B9A320461EC300FC3F7E /* Frameworks */,
+				61E4B9A420461EC300FC3F7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kuru_Threads-timers-Task";
+			productName = "Kuru_Threads-timers-Task";
+			productReference = 61E4B9A620461EC300FC3F7E /* Kuru_Threads-timers-Task.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61E4B99E20461EC300FC3F7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Kurushetra;
+				TargetAttributes = {
+					61E4B9A520461EC300FC3F7E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 61E4B9A120461EC300FC3F7E /* Build configuration list for PBXProject "Kuru_Threads-timers-Task" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61E4B99D20461EC300FC3F7E;
+			productRefGroup = 61E4B9A720461EC300FC3F7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61E4B9A520461EC300FC3F7E /* Kuru_Threads-timers-Task */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61E4B9A420461EC300FC3F7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61E4B9AE20461EC300FC3F7E /* Assets.xcassets in Resources */,
+				61E4B9B120461EC300FC3F7E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61E4B9A220461EC300FC3F7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				616581822048BB5C007D3D9F /* SystemComandOperation.swift in Sources */,
+				61E4B9AC20461EC300FC3F7E /* ViewController.swift in Sources */,
+				616581802048BAAF007D3D9F /* FireWallStateOperation.swift in Sources */,
+				6165817E2048B32F007D3D9F /* NetStatOperation.swift in Sources */,
+				616581892048C196007D3D9F /* NetStatQueues.swift in Sources */,
+				61E4B9AA20461EC300FC3F7E /* AppDelegate.swift in Sources */,
+				616581862048BC21007D3D9F /* ParseFireWallStateOperation.swift in Sources */,
+				6165817C2048B2C6007D3D9F /* TaskOperation.swift in Sources */,
+				616581842048BBE5007D3D9F /* ParseNetStatOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		61E4B9AF20461EC300FC3F7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61E4B9B020461EC300FC3F7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61E4B9B420461EC300FC3F7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61E4B9B520461EC300FC3F7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		61E4B9B720461EC300FC3F7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Kuru_Threads-timers-Task/Kuru_Threads_timers_Task.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TFF2HTL4NS;
+				INFOPLIST_FILE = "Kuru_Threads-timers-Task/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Talaiot.Kuru-Threads-timers-Task";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		61E4B9B820461EC300FC3F7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Kuru_Threads-timers-Task/Kuru_Threads_timers_Task.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TFF2HTL4NS;
+				INFOPLIST_FILE = "Kuru_Threads-timers-Task/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Talaiot.Kuru-Threads-timers-Task";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61E4B9A120461EC300FC3F7E /* Build configuration list for PBXProject "Kuru_Threads-timers-Task" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61E4B9B420461EC300FC3F7E /* Debug */,
+				61E4B9B520461EC300FC3F7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61E4B9B620461EC300FC3F7E /* Build configuration list for PBXNativeTarget "Kuru_Threads-timers-Task" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61E4B9B720461EC300FC3F7E /* Debug */,
+				61E4B9B820461EC300FC3F7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61E4B99E20461EC300FC3F7E /* Project object */;
+}

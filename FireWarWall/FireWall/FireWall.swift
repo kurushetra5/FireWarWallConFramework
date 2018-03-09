@@ -13,13 +13,14 @@ import Foundation
 protocol FireWallDelegate {
     func fireWallEstablished(conections:[ConectionNode])
     func fireWallEstablished(ips:[NetStatConection])
-    func fireWallBlocked(ips:[ConectionNode])
+    func fireWallBlocked(ips:[NetStatConection])
     func fireWall(state:Bool)
     func fireWallDidUnblockIp()
     func fireWallDidBlockIp()
     func fireWallDidStart()
     func fireWallDidStop()
 }
+
 
 
 
@@ -41,8 +42,9 @@ class FireWall: ComandRunerDelegate {
     
     
     
+    
     init() {
-        comandRuner.comandRunerDelegate = self
+        comandRuner.comandRunerDelegate = self //FIXME: dosobjetos de lo mismo delegados se mezclan las cosas .....
         
     }
     
@@ -77,21 +79,21 @@ class FireWall: ComandRunerDelegate {
     
     
     func start() {
-      comandRuner.runComand(type:.fireWallStart, ip: nil)
+        comandRuner.runComand(type:.fireWallStart, ip: nil)
     }
     
     func stop() {
-      comandRuner.runComand(type:.fireWallStop, ip: nil)
+        comandRuner.runComand(type:.fireWallStop, ip: nil)
     }
     
     
     func showBlockedIpsOn() {
-          needUpdateBlockedIps = true
+        needUpdateBlockedIps = true
         
         if !isTimerRuning  {
             backgroundTimer()
         }
-       
+        
         
     }
     func showBlockedIpsOff() {
@@ -106,7 +108,7 @@ class FireWall: ComandRunerDelegate {
     
     
     func block(ip:String) {
-         comandRuner.runComand(type:.addFireWallBadHosts, ip:ip)
+        comandRuner.runComand(type:.addFireWallBadHosts, ip:ip)
     }
     
     func unBlock(ip:String) {
@@ -132,22 +134,52 @@ class FireWall: ComandRunerDelegate {
     func comand(finishWith data: String) {
         parseComand(result: data)
     }
+    func comand(type:ComandType, finishWith data: String) {
+         parseComand(result: data)
+        print(type)
+    }
     
     
-   
+    
+    
+    
+    
+    //MARK: --------    Funcs  --------------- //TODO: refractor ....otra clase o struct
+    
+    func parseComand(result:String)  {
+        
+        if result.contains("Status") {
+            if result.contains("Disabled") {
+                fireWallDelegate?.fireWall(state:false)
+                
+            }else if result.contains("Enabled"){
+                fireWallDelegate?.fireWall(state:true)
+            }
+        }
+            
+            
+        else if result.contains("tcp4") {
+            let conections =   ipsManager.findNetStatIps(inText: result)
+            fireWallDelegate?.fireWallEstablished(ips:conections)
+        }
+        else   {
+            let badHosts =   ipsManager.findBlockedIps(inText: result)
+            //            print(badHosts)
+            fireWallDelegate?.fireWallBlocked(ips:badHosts)
+        }
+        
+    }
     
     
     
     
     
-  //MARK: --------    Funcs  ---------------
-    
-   private func backgroundTimer()  {
-    isTimerRuning = true
-    
+    private func backgroundTimer()  {
+        isTimerRuning = true
+        
         DispatchQueue.global(qos:.background).async{
             let timer:Foundation.Timer = Foundation.Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.backgroundTimerAction(_:)), userInfo: nil, repeats: true);
-//            print("State Timer  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
+            //            print("State Timer  running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
             let runLoop:RunLoop = RunLoop.current;
             runLoop.add(timer, forMode: RunLoopMode.defaultRunLoopMode);
             runLoop.run();
@@ -158,7 +190,7 @@ class FireWall: ComandRunerDelegate {
     
     @objc func backgroundTimerAction(_ timer: Foundation.Timer) -> Void {
         runComands()
- 
+        
     }
     
     
@@ -198,29 +230,7 @@ class FireWall: ComandRunerDelegate {
     
     
     
-    func parseComand(result:String)  {
-        
-        if result.contains("Status") {
-            if result.contains("Disabled") {
-                 fireWallDelegate?.fireWall(state:false)
-                
-            }else if result.contains("Enabled"){
-                fireWallDelegate?.fireWall(state:true)
-            }
-        }
-        
-        
-        else if result.contains("tcp4") {
-            let conections =   ipsManager.findNetStatIps(inText: result)
-            fireWallDelegate?.fireWallEstablished(ips:conections)
-        }
-        else   {
-             let badHosts =   ipsManager.findBlockedIps(inText: result)
-            print(badHosts)
-//            fireWallDelegate?.fireWallEstablished(ips:conections)
-        }
-        
-    }
+    
     
     
     

@@ -26,7 +26,7 @@ class IpsManager  {
     
     
     //MARK: -------------------- BLOCKED -----------------------------
-    func findBlockedIps(inText:String) -> [NetStatConection] {
+    func findBlockedIps(inText:String) -> [NetStatConection] { //FIXME: Aqui falls por el parse
         
         var arrayBlocked:[NetStatConection] = []
         let blocked = inText.components(separatedBy: "\n")
@@ -38,7 +38,7 @@ class IpsManager  {
                 if finded.count >= 0 {
                     if isValid(ip:finded[0]) {
                         var  conection:NetStatConection = NetStatConection()
-                        conection.sourceIp = finded[0]
+                        conection.destinationIp = finded[0]
                         arrayBlocked.append(conection)
 //                        print(finded[0])
                     }

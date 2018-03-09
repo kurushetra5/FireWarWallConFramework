@@ -22,17 +22,27 @@ protocol AppFireWallDelegate {
 }
 
 
+protocol AppInfoComandsDelegate {
+    func comandFinishWith(data:String)
+    
+    
+}
 
-final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
+
+final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate ,InfoComandsManagerDelegate{
+    
+    
     
     
     static let shared = AppController()
     
     var appAlivedelegate:AppAliveConectionsDelegate!
     var appFireWallDelegate:AppFireWallDelegate!
+    var appInfoComandsDelegate:AppInfoComandsDelegate!
     
     var fireWall:FireWall = FireWall()
     var dataBase:dataBaseManager = dataBaseManager()
+    var infoComands:InfoComandsManager = InfoComandsManager()
     var ipLocator:IPLocator = IPLocator()
     
     
@@ -45,13 +55,22 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         fireWall.fireWallDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
+        infoComands.infoComandsManagerDelegate = self
     }
     
     
     
     
-   //MARK: -------- FIREWALL ---------------
+   //MARK: -------- Info ---------------
+    public func runInfo(comand:ComandType) {
+        infoComands.run(comand:comand)
+    }
     
+    
+    
+    
+    
+   //MARK: -------- Conections ---------------
     public func showConections()  {
         fireWall.showConections()
     }
@@ -60,7 +79,12 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         fireWall.showConectionsOff()
     }
     
-   public func  fireWallState() {
+    
+    
+    
+    //MARK: -------- FIREWALL ---------------
+    
+    public func  fireWallState() {
         fireWall.state()
     }
     public func  fireWallStateOff() {
@@ -115,6 +139,10 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
  
     
     
+    //MARK: -------- InfoComands Delegate ---------------
+    func comand(finishWith data:String) {
+        appInfoComandsDelegate?.comandFinishWith(data:data)
+    }
     
     
     
@@ -127,10 +155,10 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
         
     }
     
+ 
     
     func fireWallEstablished(ips:[NetStatConection]) {
-        //         print("fireWallEstablished running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
-        //        checkDataBaseFor(ip:ips[0].destinationIp)
+        
         for conection in ips {
             checkDataBaseFor(conection:conection) //TODO: Cambiar pasarle un ConectionNode
         }
@@ -139,8 +167,16 @@ final class AppController:FireWallDelegate,IPLocatorDelegate ,dataBaseDelegate {
     
     
     
-    func fireWallBlocked(ips:[ConectionNode]) {
-        appFireWallDelegate?.blocked(ips:ips)
+    func fireWallBlocked(ips:[NetStatConection]) {
+ 
+        var blockedConections:[ConectionNode] = []
+        for blocked in ips {
+            let node = dataBase.isInDataBase(ip:blocked)
+            blockedConections.append(node!)
+        }
+        DispatchQueue.main.sync {
+         appFireWallDelegate?.blocked(ips:blockedConections)
+        }
     }
     
     

@@ -11,13 +11,19 @@ import Foundation
 
 protocol  ComandRunerDelegate {
     func comand(finishWith data:String)
+    func comand(type:ComandType, finishWith data:String)
 }
+
+//protocol  ComandRunerInfoDelegate {
+//    func comand(finishWith data:String)
+//}
 
 
 
 class  ComandRuner  {
     
     public var comandRunerDelegate:ComandRunerDelegate!
+//    public var comandRunerInfoDelegate:ComandRunerInfoDelegate!
     private var stateResult:String = "no set"
     private var comandType:ComandType!
     
@@ -51,6 +57,8 @@ class  ComandRuner  {
             run(comand:FireWallStart())
         case .fireWallBadHosts:
             run(comand:FireWallBadHosts())
+        case .nsLookup:
+            run(comand:NsLookup(withIp:ip))
         default:
             print("")
         }
@@ -95,7 +103,8 @@ class  ComandRuner  {
         if data.count > 1 {
             let string =  String(data: data, encoding: String.Encoding(rawValue: String.Encoding.ascii.rawValue))
             self.stateResult = string!
-            self.comandRunerDelegate?.comand(finishWith: self.stateResult)
+//            self.comandRunerDelegate?.comand(finishWith: self.stateResult)
+             self.comandRunerDelegate?.comand(type:comandType, finishWith: self.stateResult)
             fh.waitForDataInBackgroundAndNotify()
         }
     }
