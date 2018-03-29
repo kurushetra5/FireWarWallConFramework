@@ -24,33 +24,34 @@ class InfoVC: NSViewController,InfoComandsDelegate {
         switch  sender.tag {
         case 0:
             print("Whois")
-             appController.runInfo(comand:.whois)
+            appController.runInfo(comand:Whois(withIp: ""))
         case 1:
             print("NSLookUP")
-            appController.runInfo(comand:.nsLookup)
+            appController.runInfo(comand:NsLookup(withIp:"80.34.22.11"))
         case 2:
             print("Dig")
-              appController.runInfo(comand:.dig)
+              appController.runInfo(comand:NsLookup(withIp: ""))
         case 3:
             print("TraceRoute")
-             appController.runInfo(comand:.traceRoute)
+             appController.runInfo(comand:TraceRoute(withIp: "") )
         case 4:
             print("Ping")
-              appController.runInfo(comand:.ping)
+              appController.runInfo(comand:NsLookup(withIp: ""))
         case 5:
             print("Ports/Services")
-              appController.runInfo(comand:.ports_Services)
+              appController.runInfo(comand:NsLookup(withIp: "") )
         case 6:
             print("ConectionData")
-              appController.runInfo(comand:.conectionData)
+              appController.runInfo(comand:NsLookup(withIp: "") )
         case 7:
             print("History")
-             appController.runInfo(comand:.history)
+             appController.runInfo(comand:NsLookup(withIp: ""))
         default:
             print("default")
         }
         
     }
+    
     
     
     

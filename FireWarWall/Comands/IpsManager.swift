@@ -25,6 +25,7 @@ class IpsManager  {
     
     
     
+    
     //MARK: -------------------- BLOCKED -----------------------------
     func findBlockedIps(inText:String) -> [NetStatConection] { //FIXME: Aqui falls por el parse
         
@@ -49,6 +50,8 @@ class IpsManager  {
         
         return arrayBlocked
     }
+    
+    
     
     
     

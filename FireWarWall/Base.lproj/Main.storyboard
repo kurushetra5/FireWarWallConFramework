@@ -1283,18 +1283,18 @@
                                     <rect key="frame" x="1" y="1" width="1056" height="520"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="5cl-MN-k7q">
+                                        <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="5cl-MN-k7q">
                                             <rect key="frame" x="0.0" y="0.0" width="1056" height="520"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.76118364726027399" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <size key="minSize" width="1056" height="520"/>
                                             <size key="maxSize" width="1058" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment content="2323 fgfgfggf">
                                                     <attributes>
-                                                        <color key="NSColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                        <color key="NSColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.76118364726027399" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="25" name="Geneva"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>

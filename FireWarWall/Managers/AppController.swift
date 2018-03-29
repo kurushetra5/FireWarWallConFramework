@@ -19,7 +19,7 @@ protocol FireWallDelegateState {
 }
 
 protocol FireWallDelegateBlocked {
-    func blocked(ips:[ConectionNode])
+    func blocked(ips:[ConectionNode]!)
 }
 
 
@@ -33,7 +33,7 @@ protocol InfoComandsDelegate {
 
 
 
- final class AppController:ComandsManagerDelegate,IPLocatorDelegate ,dataBaseDelegate ,InfoComandsManagerDelegate {
+ final class AppController:ComandsManagerDelegate,IPLocatorDelegate ,dataBaseDelegate   {
     
     static let shared = AppController()
     
@@ -64,7 +64,7 @@ protocol InfoComandsDelegate {
 //        fireWall.fireWallDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
-        infoComands.infoComandsManagerDelegate = self
+//        infoComands.infoComandsManagerDelegate = self
     }
     
     
@@ -83,8 +83,8 @@ protocol InfoComandsDelegate {
     
     
     //MARK: -------- Info ---------------
-    public func runInfo(comand:ComandType) {
-        infoComands.run(comand:comand)
+    public func runInfo(comand:Comand) {
+           comandsManager.runInfo(comand:comand)
     }
     
     
@@ -161,11 +161,11 @@ protocol InfoComandsDelegate {
     
     
     
-    //MARK: -------- InfoComands Delegate ---------------
-    func comand(finishWith data:String) {
-        infoComandsDelegate?.comandFinishWith(data:data)
-    }
-    
+//    //MARK: -------- InfoComands Delegate ---------------
+//    func comand(finishWith data:String) {
+//        infoComandsDelegate?.comandFinishWith(data:data)
+//    }
+//
     
     
     
@@ -173,13 +173,19 @@ protocol InfoComandsDelegate {
     //MARK: -------- ComandsManager Delegates ---------------
     func fireWall(blocked: [NetStatConection]) {
         
-        var blockedConections:[ConectionNode] = []
+        var blockedConections:[ConectionNode]!
+        
         for blockedIp in blocked {
             let node = dataBase.isInDataBase(ip:blockedIp)
             blockedConections.append(node!)
         }
         DispatchQueue.main.sync {
-            fireWallDelegateBlocked?.blocked(ips:blockedConections)
+            if blockedConections  == nil {
+               fireWallDelegateBlocked?.blocked(ips:nil)
+            }else {
+              fireWallDelegateBlocked?.blocked(ips:blockedConections)
+            }
+            
         }
     }
     
@@ -196,7 +202,9 @@ protocol InfoComandsDelegate {
         }
     }
     
-    
+    func infoComandFinishWith(data:String) {
+        infoComandsDelegate?.comandFinishWith(data:data)
+    }
     
     
     

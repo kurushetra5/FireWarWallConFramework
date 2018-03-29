@@ -9,6 +9,7 @@
 import Cocoa
 
 
+
 class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSource,AliveConectionsDelegate  {
     
     
@@ -43,8 +44,13 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegates()
-        appController.showConections()
         
+        
+    }
+    
+    override func viewDidAppear() {
+         super.viewDidAppear()
+        appController.showConections()
     }
     
     override func viewWillDisappear() {
@@ -129,7 +135,7 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
     
-    func tableViewSelectionDidChange(_ notification: Notification) {
+    func tableViewSelectionDidChange(_ notification: Notification) { //FIXME: peta al seleccionar nada
         selectedIP = aliveConections[netstatTableView.selectedRow]
          print(selectedIP.city ?? "nada")
     }

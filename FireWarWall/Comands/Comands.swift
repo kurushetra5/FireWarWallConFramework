@@ -12,13 +12,13 @@ import Foundation
 
 
 enum ComandType:String {
-    case tcpDump,traceRoute,mtRoute,whois,nsLookup,blockIp,netStat,fireWallState,fireWallBadHosts,addFireWallBadHosts,deleteFireWallBadHosts,fireWallStop,fireWallStart,genericComand,dig,history,ports_Services,ping,conectionData
+    case tcpDump,traceRoute,mtRoute,whois,nsLookup,blockIp,netStat,fireWallState,fireWallBadHosts,addFireWallBadHosts,deleteFireWallBadHosts,fireWallStop,fireWallStart,genericComand,dig,history,ports_Services,ping,conectionData,generic
 }
 
 protocol Comand  {
     var taskPath:String{get set}
     var taskArgs:[String]{get set}
-    
+    var type:ComandType{get set}
 }
 
 protocol ComandIp:Comand  {
@@ -40,8 +40,49 @@ struct NetStatConection  {
 }
 
 
+
+//MARK: -------------------------------- AppTaskComand --------------------------------
+protocol comandDelegate   {
+    func  comand(finish:ComandType,result:Any)
+}
+
+
+
+class  AppTaskComand:ShellComandDelegate  {
+    
+    var delegate: comandDelegate!
+    private var comand:Comand!
+    private var shellComand:ShellComand!
+    var praser:Prasable!
+    
+    
+    init(comand:Comand, praser:Prasable, delegate:comandDelegate) {
+        shellComand = ShellComand()
+        self.comand = comand
+        self.shellComand.shellComandDelegate = self
+        self.shellComand.comandType = comand.type
+        self.praser = praser
+        self.delegate = delegate
+    }
+    
+    public func run() {
+//         self.shellComand = ShellComand()
+//         self.shellComand.shellComandDelegate = self
+//         self.shellComand.comandType = comand.type
+        
+        shellComand.run(comand:comand)
+    }
+    
+    
+}
+
+
+
+
+
 //MARK: -------------------------------- GENERIC--------------------------------
 struct genericComand:Comand  {
+    var type: ComandType = .generic
     var taskPath:String =  ""
     var taskArgs:[String] = []
     
@@ -51,6 +92,8 @@ struct genericComand:Comand  {
 
 //MARK: -------------------------------- CONECTIONS --------------------------------
 struct NetStat:Comand  {
+    var type: ComandType = .netStat
+    
     var taskPath:String =  "/bin/sh"
     var taskArgs:[String] = ["-c" , "netstat -an  | grep ESTABLISHED"]
     
@@ -62,6 +105,8 @@ struct NetStat:Comand  {
 
 //MARK: -------------------------------- INFO COMANDS --------------------------------
 struct TcpDumpCom:Comand {
+    var type: ComandType = .tcpDump
+    
     var ip:String = ""
     var taskPath:String =  "/usr/sbin/tcpdump"
     var taskArgs:[String] = ["-i","en4","-n" ," not (src net 192.168.8.1 and dst net 192.168.8.100) and not  (src net 192.168.8.100 and dst net 192.168.8.1) and not (src net 192.168.8.1 and dst net 239.255.255.250)"]
@@ -76,6 +121,8 @@ struct TcpDumpCom:Comand {
 
 
 struct TraceRoute:ComandIp {
+    var type: ComandType = .traceRoute
+    
     var ip:String = ""
     var taskPath:String =  "/usr/sbin/traceroute"
     var taskArgs:[String] = ["-w 1" , "-m30" ,"www.google.com"]
@@ -93,6 +140,8 @@ struct TraceRoute:ComandIp {
 
 
 struct NsLookup:ComandIp {
+    var type: ComandType = .nsLookup
+    
     var ip:String = ""
     var taskPath:String =  "/usr/bin/nslookup"
     var taskArgs:[String] = []
@@ -110,6 +159,8 @@ struct NsLookup:ComandIp {
 
 
 struct Whois:ComandIp {
+    var type: ComandType = .whois
+    
     var ip:String = ""
     var taskPath:String =  "/usr/sbin/traceroute"
     var taskArgs:[String] = []
@@ -127,6 +178,8 @@ struct Whois:ComandIp {
 
 
 struct MtRoute:ComandIp {
+    var type: ComandType = .mtRoute
+    
     
     var ip:String = ""
     var taskPath:String =  "/bin/sh"
@@ -151,19 +204,25 @@ struct MtRoute:ComandIp {
 
 //MARK: -------------------------------- FIREWALL --------------------------------
 struct FireWallStart:Comand  {
+    var type: ComandType = .fireWallStart
+    
     var taskPath:String =  "/bin/sh"
     var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S pfctl -e -f  /etc/pf.conf"]
     
 }
 
 struct FireWallStop:Comand  {
+    var type: ComandType = .fireWallStop
+    
     var taskPath:String =  "/bin/sh"
     var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S  pfctl -d"]
     
 }
 
 
-struct FireWallState:Comand  {
+class FireWallState:Comand  {
+    var type: ComandType = .fireWallState
+    
     var taskPath:String =  "/bin/sh"
     var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S pfctl  -s info | grep Status"]
     
@@ -171,6 +230,8 @@ struct FireWallState:Comand  {
 
 
 struct FireWallBadHosts:Comand  {
+    var type: ComandType = .fireWallBadHosts
+    
     var taskPath:String =  "/bin/sh"
     var taskArgs:[String] = ["-c" , "echo nomeacuerdo87378737 | sudo -S pfctl -t badhosts -T show"]
     
@@ -178,6 +239,8 @@ struct FireWallBadHosts:Comand  {
 
 
 struct AddFireWallBadHosts:ComandIp  {
+    var type: ComandType = .addFireWallBadHosts
+    
     
     var ip:String = ""
     var taskPath:String =  "/bin/sh"
@@ -199,6 +262,8 @@ struct AddFireWallBadHosts:ComandIp  {
 
 
 struct DeleteFireWallBadHosts:ComandIp  {
+    var type: ComandType = .deleteFireWallBadHosts
+    
     
     var ip:String = ""
     var taskPath:String =  "/bin/sh"

@@ -20,9 +20,12 @@ protocol ComandsManagerFireWallStateDelegate {
 protocol ComandsManagerFireWallBlockedDelegate {
     func fireWall(blocked:[NetStatConection])
 }
+protocol ComandsManagerInfoComandsDelegate {
+    func infoComandFinishWith(data:String)
+}
 
 
-protocol ComandsManagerDelegate:ComandsManagerConectionsDelegate,ComandsManagerFireWallStateDelegate,ComandsManagerFireWallBlockedDelegate {
+protocol ComandsManagerDelegate:ComandsManagerConectionsDelegate,ComandsManagerFireWallStateDelegate,ComandsManagerFireWallBlockedDelegate,ComandsManagerInfoComandsDelegate {
     
 }
 
@@ -41,6 +44,7 @@ class ComandsManager:ComandRunerDelegate ,PraserManagerDelegate {
     public var conectionsDelegate:ComandsManagerConectionsDelegate!
     public var fireWallStateDelegate:ComandsManagerFireWallStateDelegate!
     public var fireWallBlockedDelegate:ComandsManagerFireWallBlockedDelegate!
+    public var comandsManagerInfoComandsDelegate:ComandsManagerInfoComandsDelegate!
     
     
     
@@ -57,6 +61,7 @@ class ComandsManager:ComandRunerDelegate ,PraserManagerDelegate {
     func setUpDelegates() {
         comandRuner.comandRunerDelegate = self
         fireWall.comandRuner.comandRunerDelegate = self
+        fireWall.comandRuner2.comandRunerDelegate = self
         parser.praserManagerDelegate = self
     }
     
@@ -110,6 +115,13 @@ class ComandsManager:ComandRunerDelegate ,PraserManagerDelegate {
     
     
     
+    /// ---------- Info ----------
+    public func runInfo(comand:Comand) {
+//        comandRuner.runComand(type:comand, ip:"85.23.45.3")
+        fireWall.runInfo(comand:comand)
+    }
+    
+    
     
     
     //MARK: ------------- ComandRuner Delegates ------------
@@ -134,11 +146,15 @@ class ComandsManager:ComandRunerDelegate ,PraserManagerDelegate {
             let state:Bool =  (data as? Bool)!
             comandsManagerDelegate?.fireWall(state:state)
         case .fireWallBadHosts:
-            print("fireWallBadHosts")
+//            print("fireWallBadHosts")
             let blocked:[NetStatConection] = (data as? [NetStatConection])!
             comandsManagerDelegate?.fireWall(blocked: blocked)
+        case .nsLookup:
+            print("nsLookup")
+            let nsLookup:String = (data as? String)!
+             comandsManagerDelegate?.infoComandFinishWith(data:nsLookup)
         default:
-            print("netsat")
+            print("default")
         }
     }
     

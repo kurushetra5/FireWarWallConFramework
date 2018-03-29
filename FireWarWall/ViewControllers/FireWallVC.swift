@@ -58,9 +58,15 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegates()
-         appController.fireWallState()
         
         
+        
+    }
+    
+    override func viewDidAppear() {
+         super.viewDidAppear()
+        appController.fireWallState()
+//        appController.showBlockedIpsOn()
     }
     
     override func viewWillDisappear() {
@@ -84,19 +90,27 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     
     //MARK: -------- APPFireWall Delegates   ---------------
     
-    func blocked(ips:[ConectionNode]) {
-         if blockedConections != ips {
-           print("No Equals..")
-            blockedConections = ips
-            fireWallTableView.reloadData()
+    func blocked(ips:[ConectionNode]!) {
+        
+        if ips == nil {
+           blockedConections =  []
+        } else {
+          blockedConections = ips
         }
+        
+        
+//         if blockedConections != ips {
+//           print("No Equals..")
+//            blockedConections = ips
+            fireWallTableView.reloadData()
+//        }
     }
     
     
     func fireWall(state:Bool) {
         
         if state == true {
-             appController.showBlockedIpsOn()
+            
             background.backgroundColor = .green
             startStopButton.title = "STOP"
             
@@ -105,7 +119,8 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
             startStopButton.title = "START"
           
         }
-        
+//        appController.showBlockedIpsOn()
+ 
     }
     
     

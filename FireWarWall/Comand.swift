@@ -11,19 +11,17 @@ import Foundation
 
 protocol  ComandRunerDelegate {
     func comand(finishWith data:String)
-//    func comand(type:ComandType, finishWith data:String)
+ 
 }
 
-//protocol  ComandRunerInfoDelegate {
-//    func comand(finishWith data:String)
-//}
+
 
 
 
 class  ComandRuner  {
     
     public var comandRunerDelegate:ComandRunerDelegate!
-//    public var comandRunerInfoDelegate:ComandRunerInfoDelegate!
+ 
     private var stateResult:String = "no set"
     private var comandType:ComandType!
     
@@ -83,12 +81,15 @@ class  ComandRuner  {
         fh.waitForDataInBackgroundAndNotify()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(receivedData), name: NSNotification.Name.NSFileHandleDataAvailable, object: nil)
+    notificationCenter.addObserver(self, selector: #selector(receivedData), name: NSNotification.Name.NSFileHandleDataAvailable, object: nil)
         
-//        task.terminationHandler = {task -> Void in
-//        print("acabado")
-//
-//        }
+//         task.terminationHandler = {task -> Void in
+//          print("--------------")
+//          print(comand)
+//          print(self.comandType)
+//          print(self.stateResult)
+//            print("--------------")
+//         }
         task.launch()
     }
     
@@ -100,13 +101,18 @@ class  ComandRuner  {
         let fh:FileHandle = notif.object as! FileHandle
         
         let data = fh.availableData
-        if data.count > 1 {
+        if data.count > 1 { //TODO: buscar solucion
             let string =  String(data: data, encoding: String.Encoding(rawValue: String.Encoding.ascii.rawValue))
-            self.stateResult = string!
-            self.comandRunerDelegate?.comand(finishWith: self.stateResult)
+//            self.stateResult = string!
+//            print(string ?? "na")
+//            print("--------------")
+//            print(self.comandType)
+//            print(self.stateResult)
+//            print("--------------")
+            self.comandRunerDelegate?.comand(finishWith:string!)
 //             self.comandRunerDelegate?.comand(type:comandType, finishWith: self.stateResult)
             fh.waitForDataInBackgroundAndNotify()
-        }
+         }
     }
     
     
