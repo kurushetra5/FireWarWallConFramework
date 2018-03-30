@@ -1,0 +1,11 @@
+framework module KUTaskFramework {
+  umbrella header "KUTaskFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module KUTaskFramework.Swift {
+    header "KUTaskFramework-Swift.h"
+    requires objc
+}

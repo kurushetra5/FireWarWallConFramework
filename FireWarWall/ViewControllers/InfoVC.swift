@@ -27,7 +27,8 @@ class InfoVC: NSViewController,InfoComandsDelegate {
 //            appController.runInfo(comand:Whois(withIp: ""))
         case 1:
             print("NSLookUP")
-//            appController.runInfo(comand:NsLookup(withIp:"80.34.22.11"))
+            
+            appController.runInfo(comand:"fireWallState")
         case 2:
             print("Dig")
 //              appController.runInfo(comand:NsLookup(withIp: ""))

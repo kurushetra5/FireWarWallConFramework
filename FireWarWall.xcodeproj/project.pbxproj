@@ -20,7 +20,25 @@
 		61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */; };
 		61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */; };
 		61D79AC52034E0CD00CE226B /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D79AC42034E0CD00CE226B /* AppController.swift */; };
+		A02A8A96206DCEA60037A50F /* KUTaskFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; };
+		A02A8A97206DCF140037A50F /* KUTaskFramework.framework in Resources */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; };
+		A02A8A98206DCF2F0037A50F /* KUTaskFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; };
+		A02A8A99206DCF2F0037A50F /* KUTaskFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A02A8A9A206DCF2F0037A50F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A02A8A99206DCF2F0037A50F /* KUTaskFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		616FF5982050A22900681E63 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
@@ -39,6 +57,7 @@
 		61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataClass.swift"; sourceTree = "<group>"; };
 		61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		61D79AC42034E0CD00CE226B /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KUTaskFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A02A8A98206DCF2F0037A50F /* KUTaskFramework.framework in Frameworks */,
+				A02A8A96206DCEA60037A50F /* KUTaskFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +76,7 @@
 		61937D31202B2A98007BA376 = {
 			isa = PBXGroup;
 			children = (
+				A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */,
 				61937D3C202B2A98007BA376 /* FireWarWall */,
 				61937D3B202B2A98007BA376 /* Products */,
 			);
@@ -124,6 +146,7 @@
 				61937D36202B2A98007BA376 /* Sources */,
 				61937D37202B2A98007BA376 /* Frameworks */,
 				61937D38202B2A98007BA376 /* Resources */,
+				A02A8A9A206DCF2F0037A50F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A02A8A97206DCF140037A50F /* KUTaskFramework.framework in Resources */,
 				61937D45202B2A98007BA376 /* Assets.xcassets in Resources */,
 				61937D48202B2A98007BA376 /* Main.storyboard in Resources */,
 			);
@@ -331,6 +355,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TFF2HTL4NS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FireWarWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -347,6 +375,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TFF2HTL4NS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FireWarWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

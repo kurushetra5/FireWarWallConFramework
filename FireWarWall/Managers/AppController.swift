@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KUTaskFramework
 
 
 protocol AliveConectionsDelegate {
@@ -53,7 +54,7 @@ protocol InfoComandsDelegate {
     
     init() {
         setUpDelegates()
-        
+         ComandsRuner.comandsRunerId = "87378737"
     }
     
     
@@ -83,9 +84,13 @@ protocol InfoComandsDelegate {
     
     
     //MARK: -------- Info ---------------
-//    public func runInfo(comand:Comand) {
-////           comandsManager.runInfo(comand:comand)
-//    }
+    public func runInfo(comand:String) {
+        
+        ComandsRuner.run(comand:comand, forEver: false) { (result) in
+            print(result)
+            self.infoComandsDelegate?.comandFinishWith(data:result)
+        }
+    }
     
     
     
@@ -94,6 +99,7 @@ protocol InfoComandsDelegate {
     //MARK: -------- Conections ---------------
     public func showConections()  {
 //        comandsManager.showConections()
+        
     }
     
     public func showConectionsOff()  {
