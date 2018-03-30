@@ -14,6 +14,6 @@ import CoreData
 public class ConectionNode: NSManagedObject {
 
     
-    var netstatConection:NetStatConection!
+//    var netstatConection:NetStatConection!
     
 }

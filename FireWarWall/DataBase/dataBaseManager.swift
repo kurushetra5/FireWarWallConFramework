@@ -72,29 +72,29 @@ class dataBaseManager  {
     
     
     
-    func ipLocationReady(ipNode:NetStatConection) {
-        
-         let newNode:ConectionNode = newIpEntity()
-         newNode.adress = ipNode.ipLocation.org
-         newNode.city = ipNode.ipLocation.city
-         newNode.country = ipNode.ipLocation.country
-         newNode.destination = ipNode.destinationIp
-         newNode.ip = ipNode.destinationIp
-         newNode.source = ipNode.sourceIp
-         delegate?.filled(node:newNode)
-        
-//         print(newNode.adress)
-//         print(newNode)
-        
-        do {
-            try self.managedContext.save()
-            
-        } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-        }
-        
- 
-    }
+//    func ipLocationReady(ipNode:NetStatConection) {
+//
+//         let newNode:ConectionNode = newIpEntity()
+//         newNode.adress = ipNode.ipLocation.org
+//         newNode.city = ipNode.ipLocation.city
+//         newNode.country = ipNode.ipLocation.country
+//         newNode.destination = ipNode.destinationIp
+//         newNode.ip = ipNode.destinationIp
+//         newNode.source = ipNode.sourceIp
+//         delegate?.filled(node:newNode)
+//
+////         print(newNode.adress)
+////         print(newNode)
+//
+//        do {
+//            try self.managedContext.save()
+//
+//        } catch let error as NSError {
+//          print("Could not save. \(error), \(error.userInfo)")
+//        }
+//
+//
+//    }
     
     
     
@@ -135,56 +135,56 @@ class dataBaseManager  {
  
     
     
-    func isInDataBase(ip:NetStatConection) -> ConectionNode! {
-        
-        //assert o que
-        
-        
-        if let keepedConection = fetchInfoFor(ip:ip) {
-            keepedConection.conected = true
-            return keepedConection
-        }else {
-            return nil
-        }
-        
- 
-        
-    }
+//    func isInDataBase(ip:NetStatConection) -> ConectionNode! {
+//
+//        //assert o que
+//
+//
+//        if let keepedConection = fetchInfoFor(ip:ip) {
+//            keepedConection.conected = true
+//            return keepedConection
+//        }else {
+//            return nil
+//        }
+//
+//
+//
+//    }
     
     
     
     
  
     
-    func fetchInfoFor(ip:NetStatConection) ->  ConectionNode! { //FIXME: Sobra ip
-        
- 
-        var foundNode:ConectionNode!
-        
-        let fetchRequest: NSFetchRequest<ConectionNode> = ConectionNode.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "destination == %@",ip.destinationIp)
-        
-        do {
-            let searchResults = try managedContext.fetch(fetchRequest)
-//            print ("num of results = \(searchResults.count)")
-            
-            if searchResults.count >= 2 {
-                print("Duplicate Ip found")
- 
-                foundNode = searchResults[0]//FIXME: Sobra
-                foundedNode = searchResults[0]
-            }
-            if searchResults.count == 1 {
- 
-                foundNode = searchResults[0]//FIXME: Sobra
-                foundedNode = searchResults[0]
-            }
-            
-        } catch {
-            print("Error with request: \(error)")
-        }
-        return  foundNode
-    }
+//    func fetchInfoFor(ip:NetStatConection) ->  ConectionNode! { //FIXME: Sobra ip
+//
+//
+//        var foundNode:ConectionNode!
+//
+//        let fetchRequest: NSFetchRequest<ConectionNode> = ConectionNode.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "destination == %@",ip.destinationIp)
+//
+//        do {
+//            let searchResults = try managedContext.fetch(fetchRequest)
+////            print ("num of results = \(searchResults.count)")
+//
+//            if searchResults.count >= 2 {
+//                print("Duplicate Ip found")
+//
+//                foundNode = searchResults[0]//FIXME: Sobra
+//                foundedNode = searchResults[0]
+//            }
+//            if searchResults.count == 1 {
+//
+//                foundNode = searchResults[0]//FIXME: Sobra
+//                foundedNode = searchResults[0]
+//            }
+//
+//        } catch {
+//            print("Error with request: \(error)")
+//        }
+//        return  foundNode
+//    }
     
     
  

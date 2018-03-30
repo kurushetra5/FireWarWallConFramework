@@ -33,7 +33,7 @@ protocol InfoComandsDelegate {
 
 
 
- final class AppController:ComandsManagerDelegate,IPLocatorDelegate ,dataBaseDelegate   {
+ final class AppController:IPLocatorDelegate ,dataBaseDelegate   {
     
     static let shared = AppController()
     
@@ -43,8 +43,8 @@ protocol InfoComandsDelegate {
     var fireWallDelegateBlocked:FireWallDelegateBlocked!
     
     
-    var comandsManager:ComandsManager = ComandsManager()
-    var fireWall:FireWall = FireWall()
+//    var comandsManager:ComandsManager = ComandsManager()
+//    var fireWall:FireWall = FireWall()
     var dataBase:dataBaseManager = dataBaseManager()
     var infoComands:InfoComandsManager = InfoComandsManager()
     var ipLocator:IPLocator = IPLocator()
@@ -60,7 +60,7 @@ protocol InfoComandsDelegate {
     
     //MARK: -------- Configuration  ---------------
     func setUpDelegates() {
-        comandsManager.comandsManagerDelegate = self
+//        comandsManager.comandsManagerDelegate = self
 //        fireWall.fireWallDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
@@ -83,9 +83,9 @@ protocol InfoComandsDelegate {
     
     
     //MARK: -------- Info ---------------
-    public func runInfo(comand:Comand) {
-           comandsManager.runInfo(comand:comand)
-    }
+//    public func runInfo(comand:Comand) {
+////           comandsManager.runInfo(comand:comand)
+//    }
     
     
     
@@ -93,11 +93,11 @@ protocol InfoComandsDelegate {
     
     //MARK: -------- Conections ---------------
     public func showConections()  {
-        comandsManager.showConections()
+//        comandsManager.showConections()
     }
     
     public func showConectionsOff()  {
-        comandsManager.showConectionsOff()
+//        comandsManager.showConectionsOff()
     }
     
     
@@ -107,52 +107,52 @@ protocol InfoComandsDelegate {
     //MARK: -------- FIREWALL ---------------
     
     public func  fireWallState() {
-        comandsManager.fireWallState()
+//        comandsManager.fireWallState()
     }
     public func  fireWallStateOff() {
-        comandsManager.fireWallStateOff()
+//        comandsManager.fireWallStateOff()
     }
     
     public func  startFireWall() {
-        comandsManager.startFireWall()
+//        comandsManager.startFireWall()
     }
     
     public func  stopFireWall() {
-        comandsManager.stopFireWall()
+//        comandsManager.stopFireWall()
     }
     
     func showBlockedIpsOn() {
-        comandsManager.showBlockedIpsOn()
+//        comandsManager.showBlockedIpsOn()
     }
     func showBlockedIpsOff() {
-        comandsManager.showBlockedIpsOff()
+//        comandsManager.showBlockedIpsOff()
     }
     
     public func block(ip:ConectionNode) {
-        comandsManager.block(ip: ip)
+//        comandsManager.block(ip: ip)
     }
     public func unblock(ip:ConectionNode) {
-        comandsManager.unblock(ip:ip)
+//        comandsManager.unblock(ip:ip)
     }
     
     
     
     
     //MARK: -------- DATABASE ---------------
-    func checkDataBaseFor(conection:NetStatConection) {
-        
-        if let node = dataBase.isInDataBase(ip:conection) {
-            DispatchQueue.main.sync {
-                appAlivedelegate?.alive(conections:node)
-            }
-            
-            
-        }else {
-            ipLocator.fetchIpLocation(conection:conection)
-        }
-        
-        
-    }
+//    func checkDataBaseFor(conection:NetStatConection) {
+//
+//        if let node = dataBase.isInDataBase(ip:conection) {
+//            DispatchQueue.main.sync {
+//                appAlivedelegate?.alive(conections:node)
+//            }
+//
+//
+//        }else {
+//            ipLocator.fetchIpLocation(conection:conection)
+//        }
+//
+//
+//    }
     
     func cleanIpsDataBase() {
         dataBase.cleanDataBase()
@@ -171,30 +171,30 @@ protocol InfoComandsDelegate {
     
     
     //MARK: -------- ComandsManager Delegates ---------------
-    func fireWall(blocked: [NetStatConection]) {
-        
-        var blockedConections:[ConectionNode]!
-        
-        for blockedIp in blocked {
-            let node = dataBase.isInDataBase(ip:blockedIp)
-            blockedConections.append(node!)
-        }
-        DispatchQueue.main.sync {
-            if blockedConections  == nil {
-               fireWallDelegateBlocked?.blocked(ips:nil)
-            }else {
-              fireWallDelegateBlocked?.blocked(ips:blockedConections)
-            }
-            
-        }
-    }
+//    func fireWall(blocked: [NetStatConection]) {
+//
+//        var blockedConections:[ConectionNode]!
+//
+//        for blockedIp in blocked {
+//            let node = dataBase.isInDataBase(ip:blockedIp)
+//            blockedConections.append(node!)
+//        }
+//        DispatchQueue.main.sync {
+//            if blockedConections  == nil {
+//               fireWallDelegateBlocked?.blocked(ips:nil)
+//            }else {
+//              fireWallDelegateBlocked?.blocked(ips:blockedConections)
+//            }
+//
+//        }
+//    }
     
-    func established(conections: [NetStatConection]) {
-        
-        for conection in conections {
-            checkDataBaseFor(conection:conection) //TODO: Cambiar pasarle un ConectionNode
-        }
-    }
+//    func established(conections: [NetStatConection]) {
+//
+//        for conection in conections {
+//            checkDataBaseFor(conection:conection) //TODO: Cambiar pasarle un ConectionNode
+//        }
+//    }
     func fireWall(state:Bool) {
         //         print("fireWall running on = \(Thread.isMainThread ? "Main Thread":"Background Thread")")
         DispatchQueue.main.sync {
@@ -251,16 +251,16 @@ protocol InfoComandsDelegate {
     
     //TODO: para extension de protocolo ---------------------------
     func fireWallDidUnblockIp() {
-        fireWall.showBlockedIps()
+//        fireWall.showBlockedIps()
     }
     func fireWallDidBlockIp() {
-        fireWall.showBlockedIps()
+//        fireWall.showBlockedIps()
     }
     func fireWallDidStart() {
-        fireWall.state()
+//        fireWall.state()
     }
     func fireWallDidStop() {
-        fireWall.state()
+//        fireWall.state()
     }
     
     
@@ -272,10 +272,10 @@ protocol InfoComandsDelegate {
     
     
     //MARK: --------  ipLocationDelegate ---------------
-    func ipLocationReady(ipLocation:NetStatConection) {
-        
-        dataBase.ipLocationReady(ipNode:ipLocation)
-    }
+//    func ipLocationReady(ipLocation:NetStatConection) {
+//
+//        dataBase.ipLocationReady(ipNode:ipLocation)
+//    }
     
     
     

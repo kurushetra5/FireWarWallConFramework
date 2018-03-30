@@ -11,7 +11,7 @@ import Foundation
 
 
 protocol IPLocatorDelegate {
-    func ipLocationReady(ipLocation:NetStatConection)
+//    func ipLocationReady(ipLocation:NetStatConection)
 }
 
 
@@ -42,37 +42,37 @@ class   IPLocator  {
     var locatorDelegate:IPLocatorDelegate!
     
     
-    func fetchIpLocation(conection:NetStatConection) {
-        
-        let decoder = JSONDecoder()
-        let url = URL(string:"http://ip-api.com/json/" + conection.destinationIp)
-        
-        URLSession.shared.dataTask(with: url!, completionHandler: {
-            (data, response, error) in
-            if(error != nil){
-                print(error ?? "Error in fetchIpLocation")
-                //TODO: delegate message error
-            }else{
-                do{
-                    let node = try decoder.decode(IPLocation.self, from: data!)
-//                     print(node)
-                    var conectionFull:NetStatConection = conection
-                    conectionFull.ipLocation = node
-                    
-                    OperationQueue.main.addOperation({
-                        
-                        self.locatorDelegate.ipLocationReady(ipLocation:conectionFull)
-                        
-                   })
-                    
-                }catch let error as NSError{ //FIXME: pasar un node con la info rellena co el de error.
-                    print(error)
-//                     print(ip)
-                    
-                }
-            }
-        }).resume()
-    }
+//    func fetchIpLocation(conection:NetStatConection) {
+//
+//        let decoder = JSONDecoder()
+//        let url = URL(string:"http://ip-api.com/json/" + conection.destinationIp)
+//
+//        URLSession.shared.dataTask(with: url!, completionHandler: {
+//            (data, response, error) in
+//            if(error != nil){
+//                print(error ?? "Error in fetchIpLocation")
+//                //TODO: delegate message error
+//            }else{
+//                do{
+//                    let node = try decoder.decode(IPLocation.self, from: data!)
+////                     print(node)
+//                    var conectionFull:NetStatConection = conection
+//                    conectionFull.ipLocation = node
+//
+//                    OperationQueue.main.addOperation({
+//
+//                        self.locatorDelegate.ipLocationReady(ipLocation:conectionFull)
+//
+//                   })
+//
+//                }catch let error as NSError{ //FIXME: pasar un node con la info rellena co el de error.
+//                    print(error)
+////                     print(ip)
+//
+//                }
+//            }
+//        }).resume()
+//    }
     
     
 }
