@@ -10,9 +10,9 @@ import Cocoa
 
 
 
-    
-class InfoVC: NSViewController,InfoComandsDelegate {
 
+class InfoVC: NSViewController,InfoComandsDelegate {
+    
     
     @IBOutlet var infoTextView: NSTextView!
     
@@ -24,31 +24,30 @@ class InfoVC: NSViewController,InfoComandsDelegate {
         switch  sender.tag {
         case 0:
             print("Whois")
-//            appController.runInfo(comand:Whois(withIp: ""))
+            appController.runInfo(comand:"whois", args:"5.205.181.4")
         case 1:
             print("NSLookUP")
-            
-            appController.runInfo(comand:"fireWallState")
+            appController.runInfo(comand:"nsLookup", args:"5.205.181.4")
         case 2:
             print("Dig")
-//              appController.runInfo(comand:NsLookup(withIp: ""))
+            appController.runInfo(comand:"dig", args:"5.205.181.4")
         case 3:
             print("TraceRoute")
-//             appController.runInfo(comand:TraceRoute(withIp: "") )
+            appController.runInfo(comand:"traceRoute", args:"5.205.181.4")
         case 4:
             print("Ping")
-//              appController.runInfo(comand:NsLookup(withIp: ""))
+            appController.runInfo(comand:"generic", args:"5.205.181.4")
         case 5:
             print("Ports/Services")
-//              appController.runInfo(comand:NsLookup(withIp: "") )
+            appController.runInfo(comand:"ports_Services", args:"5.205.181.4")
         case 6:
             print("ConectionData")
-//              appController.runInfo(comand:NsLookup(withIp: "") )
+            appController.runInfo(comand:"conectionData", args:"5.205.181.4")
         case 7:
             print("History")
-//             appController.runInfo(comand:NsLookup(withIp: ""))
+            appController.runInfo(comand:"history", args:"5.205.181.4")
         default:
-            print("default")
+                print("default")
         }
         
     }
@@ -57,7 +56,7 @@ class InfoVC: NSViewController,InfoComandsDelegate {
     
     
     //MARK: -------- Class VARS  ---------------
-     var appController:AppController = AppController.shared
+    var appController:AppController = AppController.shared
     
     
     
@@ -66,14 +65,14 @@ class InfoVC: NSViewController,InfoComandsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegates()
-       
+        
     }
     
     
     
     //MARK: -------- Configuration  ---------------
     func setUpDelegates() {
-         appController.infoComandsDelegate = self
+        appController.infoComandsDelegate = self
     }
     
     
@@ -83,6 +82,6 @@ class InfoVC: NSViewController,InfoComandsDelegate {
     
     //MARK: -------- Comands Delegate  ---------------
     func comandFinishWith(data:String) {
-         infoTextView.string = data
+        infoTextView.string = data
     }
 }

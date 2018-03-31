@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6151B526206F24F300FF0099 /* KUTaskFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6151B527206F24F300FF0099 /* KUTaskFramework.framework */; };
+		6151B528206F251100FF0099 /* KUTaskFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6151B527206F24F300FF0099 /* KUTaskFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		616FF5992050A22900681E63 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616FF5982050A22900681E63 /* InfoVC.swift */; };
 		616FF59B2050A88400681E63 /* InfoComandsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616FF59A2050A88400681E63 /* InfoComandsManager.swift */; };
 		61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61937D3D202B2A98007BA376 /* AppDelegate.swift */; };
@@ -20,20 +22,16 @@
 		61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */; };
 		61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */; };
 		61D79AC52034E0CD00CE226B /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D79AC42034E0CD00CE226B /* AppController.swift */; };
-		A02A8A96206DCEA60037A50F /* KUTaskFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; };
-		A02A8A97206DCF140037A50F /* KUTaskFramework.framework in Resources */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; };
-		A02A8A98206DCF2F0037A50F /* KUTaskFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; };
-		A02A8A99206DCF2F0037A50F /* KUTaskFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A02A8A9A206DCF2F0037A50F /* Embed Frameworks */ = {
+		61A98B4C206F09D400257311 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A02A8A99206DCF2F0037A50F /* KUTaskFramework.framework in Embed Frameworks */,
+				6151B528206F251100FF0099 /* KUTaskFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6151B527206F24F300FF0099 /* KUTaskFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KUTaskFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		616FF5982050A22900681E63 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		616FF59A2050A88400681E63 /* InfoComandsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoComandsManager.swift; sourceTree = "<group>"; };
 		61937D3A202B2A98007BA376 /* FireWarWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireWarWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +56,6 @@
 		61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataClass.swift"; sourceTree = "<group>"; };
 		61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		61D79AC42034E0CD00CE226B /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KUTaskFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,20 +63,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A02A8A98206DCF2F0037A50F /* KUTaskFramework.framework in Frameworks */,
-				A02A8A96206DCEA60037A50F /* KUTaskFramework.framework in Frameworks */,
+				6151B526206F24F300FF0099 /* KUTaskFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6151B525206F24F300FF0099 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6151B527206F24F300FF0099 /* KUTaskFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		61937D31202B2A98007BA376 = {
 			isa = PBXGroup;
 			children = (
-				A02A8A95206DCEA50037A50F /* KUTaskFramework.framework */,
 				61937D3C202B2A98007BA376 /* FireWarWall */,
 				61937D3B202B2A98007BA376 /* Products */,
+				6151B525206F24F300FF0099 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,7 +151,7 @@
 				61937D36202B2A98007BA376 /* Sources */,
 				61937D37202B2A98007BA376 /* Frameworks */,
 				61937D38202B2A98007BA376 /* Resources */,
-				A02A8A9A206DCF2F0037A50F /* Embed Frameworks */,
+				61A98B4C206F09D400257311 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,7 +206,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A02A8A97206DCF140037A50F /* KUTaskFramework.framework in Resources */,
 				61937D45202B2A98007BA376 /* Assets.xcassets in Resources */,
 				61937D48202B2A98007BA376 /* Main.storyboard in Resources */,
 			);

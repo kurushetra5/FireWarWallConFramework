@@ -34,7 +34,10 @@ protocol InfoComandsDelegate {
 
 
 
- final class AppController:IPLocatorDelegate ,dataBaseDelegate   {
+final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDelegate  {
+    
+    
+    
     
     static let shared = AppController()
     
@@ -54,7 +57,7 @@ protocol InfoComandsDelegate {
     
     init() {
         setUpDelegates()
-         ComandsRuner.comandsRunerId = "87378737"
+//         ComandsRuner.comandsRunerId = "87378737"
     }
     
     
@@ -81,12 +84,17 @@ protocol InfoComandsDelegate {
     
     
     
+    //MARK: -------- ComandsRunerDelegate Delegates ---------------
+    func finish(comand: ComandType, withResult result: [String]) {
+        
+    }
+    
     
     
     //MARK: -------- Info ---------------
-    public func runInfo(comand:String) {
+    public func runInfo(comand:String, args:String) {
         
-        ComandsRuner.run(comand:comand, forEver: false) { (result) in
+        ComandsRuner.run(comand:comand, args:args, forEver: false) { (result) in
             print(result)
             self.infoComandsDelegate?.comandFinishWith(data:result)
         }
