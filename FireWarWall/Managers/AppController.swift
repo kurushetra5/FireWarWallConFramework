@@ -57,7 +57,8 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     init() {
         setUpDelegates()
-//         ComandsRuner.comandsRunerId = "87378737"
+          ComandsRuner.comandsRunerId = "yameacuerdo8737"
+       
     }
     
     
@@ -66,6 +67,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     func setUpDelegates() {
 //        comandsManager.comandsManagerDelegate = self
 //        fireWall.fireWallDelegate = self
+        ComandsRuner.comandsRunerDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
 //        infoComands.infoComandsManagerDelegate = self
@@ -121,8 +123,13 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     //MARK: -------- FIREWALL ---------------
     
     public func  fireWallState() {
-//        comandsManager.fireWallState()
+        
+        ComandsRuner.run(comand:"fireWallState", args:nil, forEver: true) { (result) in
+            print(result)
+            self.infoComandsDelegate?.comandFinishWith(data:result)
+        }
     }
+    
     public func  fireWallStateOff() {
 //        comandsManager.fireWallStateOff()
     }
