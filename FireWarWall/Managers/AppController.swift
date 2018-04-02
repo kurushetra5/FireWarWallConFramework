@@ -47,8 +47,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     var fireWallDelegateBlocked:FireWallDelegateBlocked!
     
     
-//    var comandsManager:ComandsManager = ComandsManager()
-//    var fireWall:FireWall = FireWall()
+ 
     var dataBase:dataBaseManager = dataBaseManager()
     var infoComands:InfoComandsManager = InfoComandsManager()
     var ipLocator:IPLocator = IPLocator()
@@ -57,7 +56,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     init() {
         setUpDelegates()
-//          ComandsRuner.comandsRunerId = "yameacuerdo8737"
+ 
        
     }
     
@@ -65,26 +64,17 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     //MARK: -------- Configuration  ---------------
     func setUpDelegates() {
-//        comandsManager.comandsManagerDelegate = self
-//        fireWall.fireWallDelegate = self
+ 
         ComandsRuner.comandsRunerDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
-//        infoComands.infoComandsManagerDelegate = self
+ 
     }
     
     
     
     
-    //MARK: -------- Set Delegates  for ViewControllers---------------
-    //    func setConections(delegate:ConectionsDelegate) {
-    //         comandsManager.conectionsDelegate = delegate
-    //    }
-//    func setFireWallState(delegate:FireWallStateDelegate) {
-//        comandsManager.fireWallStateDelegate = delegate
-//    }
-    
-    
+   
     
     //MARK: -------- ComandsRunerDelegate Delegates ---------------
     func finish(comand: ComandType, withResult result: [String]) {
@@ -93,13 +83,40 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     
+    
     //MARK: -------- Info ---------------
     public func runInfo(comand:String, args:String) {
         
-//        ComandsRuner.run(comand:comand, args:args, forEver: false) { (result) in
-//            print(result)
-//            self.infoComandsDelegate?.comandFinishWith(data:result)
-//        }
+        
+        let genericPraser:PraserType =  .generic
+        let ls:CustomComand = .custom(praser:genericPraser.praserToUse(), taskPath:"/bin/ls", taskArgs: ["-a"])
+        
+        
+        
+        //        let nsLookup:NetInfoComands = .nsLookup(ip: "8.8.8.8")
+        
+        ComandsRuner.run(comand:ls.comand()) { (comandResult) in
+            print(comandResult)
+        }
+        
+        
+        
+        //        ComandsRuner.runGeneric(comand:"/usr/bin/nslookup", args: ["8.8.8.8"]) { (result) in
+        //            print(result)
+        //        }
+        
+        //        ComandsRuner.run(comand:"/usr/bin/nslookup", args: "8.8.8.8", forEver: false) { (result) in
+        //            print(result)
+        //        }
+        
+        //        ComandsRuner.run(comand:.nsLookup, withIp:"8.8.8.8") { (result) in
+        //            print(result)
+        //        }
+        
+        //        ComandsRuner.run(comand:comand, args:args, forEver: false) { (result) in
+        //            print(result)
+        //            self.infoComandsDelegate?.comandFinishWith(data:result)
+        //        }
     }
     
     
@@ -108,7 +125,14 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     //MARK: -------- Conections ---------------
     public func showConections()  {
-//        comandsManager.showConections()
+        
+//        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
+//
+//        ComandsRuner.runForEver(comand:fireWallState.comand()) { (result) in
+//            print(result)
+//            self.infoComandsDelegate?.comandFinishWith(data:result)
+//        }
+        
         
     }
     
@@ -124,14 +148,22 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     public func  fireWallState() {
         
-//        ComandsRuner.run(comand:"fireWallState", args:nil, forEver: true) { (result) in
+        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
+        
+        ComandsRuner.run(comand: fireWallState.comand()) { (result) in
+            print(result)
+        }
+        
+//        ComandsRuner.runForEver(comand:fireWallState.comand()) { (result) in
 //            print(result)
 //            self.infoComandsDelegate?.comandFinishWith(data:result)
 //        }
+        
+ 
     }
     
     public func  fireWallStateOff() {
-//        comandsManager.fireWallStateOff()
+         ComandsRuner.stopForEver(comand:nil)
     }
     
     public func  startFireWall() {
@@ -159,22 +191,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     
-    //MARK: -------- DATABASE ---------------
-//    func checkDataBaseFor(conection:NetStatConection) {
-//
-//        if let node = dataBase.isInDataBase(ip:conection) {
-//            DispatchQueue.main.sync {
-//                appAlivedelegate?.alive(conections:node)
-//            }
-//
-//
-//        }else {
-//            ipLocator.fetchIpLocation(conection:conection)
-//        }
-//
-//
-//    }
-    
+ 
     func cleanIpsDataBase() {
         dataBase.cleanDataBase()
     }
@@ -182,11 +199,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     
-//    //MARK: -------- InfoComands Delegate ---------------
-//    func comand(finishWith data:String) {
-//        infoComandsDelegate?.comandFinishWith(data:data)
-//    }
-//
+ 
     
     
     
