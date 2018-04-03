@@ -133,12 +133,12 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     //MARK: -------- Conections ---------------
     public func showConections()  {
         
-//        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
-//
-//        ComandsRuner.runForEver(comand:fireWallState.comand()) { (result) in
-//            print(result)
+        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
+
+        ComandsRuner.runForEver(comand:fireWallState.comand()) { (result) in
+            print(result)
 //            self.infoComandsDelegate?.comandFinishWith(data:result)
-//        }
+        }
         
         
     }
