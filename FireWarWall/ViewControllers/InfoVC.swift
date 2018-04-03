@@ -54,12 +54,12 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
         case 3:
             print("TraceRoute")
-            let  traceRoute:NetInfoComands = .traceRoute(ip:"8.8.8.8")
+//            let  traceRoute:NetInfoComands = .traceRoute(ip:"8.8.8.8")
             
-            ComandsRuner.run(comand: traceRoute.comand()) { (result) in
-                print(result)
-                self.updateViewWith(data:result.dataArray)
-            }
+//            ComandsRuner.run(comand: traceRoute.comand()) { (result) in
+//                print(result)
+//                self.updateViewWith(data:result.dataArray)
+//            }
         case 4:
             print("Ping falta")
             
@@ -71,12 +71,12 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
         case 7:
             print("History")
-            let  netStat:NetInfoComands = .netStat
+//            let  netStat:NetInfoComands = .netStat
             
-            ComandsRuner.run(comand: netStat.comand()) { (result) in
-                print(result)
-                self.updateViewWith(data:result.dataArray)
-            }
+//            ComandsRuner.run(comand: netStat.comand()) { (result) in
+//                print(result)
+//                self.updateViewWith(data:result.dataArray)
+//            }
             
         default:
                 print("default")
