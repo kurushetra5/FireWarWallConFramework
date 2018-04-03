@@ -88,6 +88,12 @@ class FireWallVC: NSViewController , NSTableViewDelegate,NSTableViewDataSource ,
     
     
     
+    
+    
+    
+    
+    
+    
     //MARK: -------- APPFireWall Delegates   ---------------
     
     func blocked(ips:[ConectionNode]!) {
