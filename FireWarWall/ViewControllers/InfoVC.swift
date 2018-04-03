@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+import KUTaskFramework
 
 
 
@@ -24,28 +24,49 @@ class InfoVC: NSViewController,InfoComandsDelegate {
         switch  sender.tag {
         case 0:
             print("Whois")
-            appController.runInfo(comand:"whois", args:"5.205.181.4")
+            
+            let  whois:NetInfoComands = .whois(ip:"8.8.8.8")
+            
+             ComandsRuner.run(comand: whois.comand()) { (result) in
+                print(result)
+            }
+            
+           
         case 1:
             print("NSLookUP")
-            appController.runInfo(comand:"nsLookup", args:"5.205.181.4")
+            let  nsLookup:NetInfoComands = .nsLookup(ip:"8.8.8.8")
+            
+            ComandsRuner.run(comand: nsLookup.comand()) { (result) in
+                print(result)
+            }
+            
         case 2:
-            print("Dig")
-            appController.runInfo(comand:"dig", args:"5.205.181.4")
+            print("Dig falta")
+            
         case 3:
             print("TraceRoute")
-            appController.runInfo(comand:"traceRoute", args:"5.205.181.4")
+            let  traceRoute:NetInfoComands = .traceRoute(ip:"8.8.8.8")
+            
+            ComandsRuner.run(comand: traceRoute.comand()) { (result) in
+                print(result)
+            }
         case 4:
-            print("Ping")
-            appController.runInfo(comand:"generic", args:"5.205.181.4")
+            print("Ping falta")
+            
         case 5:
-            print("Ports/Services")
-            appController.runInfo(comand:"ports_Services", args:"5.205.181.4")
+            print("nmap falta")
+            
         case 6:
-            print("ConectionData")
-            appController.runInfo(comand:"conectionData", args:"5.205.181.4")
+            print("tcpDump falta") //TODO: Se debe hacer un comando que pase los datos uno ha uno.
+            
         case 7:
             print("History")
-            appController.runInfo(comand:"history", args:"5.205.181.4")
+            let  netStat:NetInfoComands = .netStat
+            
+            ComandsRuner.run(comand: netStat.comand()) { (result) in
+                print(result)
+            }
+            
         default:
                 print("default")
         }

@@ -96,7 +96,14 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         //        let nsLookup:NetInfoComands = .nsLookup(ip: "8.8.8.8")
         
         ComandsRuner.run(comand:ls.comand()) { (comandResult) in
+            var result:PraserResult!
+            result = comandResult as PraserResult
+            
             print(comandResult)
+            print(result.dataType)
+            print(result.dataArray)
+            print(result.dataString)
+            
         }
         
         
