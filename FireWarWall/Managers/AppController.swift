@@ -78,7 +78,9 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     //MARK: -------- ComandsRunerDelegate Delegates ---------------
     func finish(comand: String, withResult result: [String]) {
-        
+        print("-------------------")
+        print(comand)
+        print(result)
     }
     
     
@@ -114,7 +116,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     //MARK: -------- Conections ---------------
     public func showConections()  {
         
-        //        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
+        
         let genericPraser:PraserType =  .generic
         let netStat:Comand = NetStat(praser:genericPraser.praserToUse() , name:"netstat")
         
@@ -137,6 +139,15 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     //MARK: -------- FIREWALL ---------------
     
     public func  fireWallState() {
+        
+        let genericPraser:PraserType =  .generic
+        let state:Comand = FireWallState(withId:"yameacuerdo8737", name:"fireWallState", praser: genericPraser.praserToUse())
+        
+        ComandsRuner.runForEver(comand:state) { (result) in
+            print(result)
+            //         self.infoComandsDelegate?.comandFinishWith(data:result)
+        }
+        
         
         //        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
         
