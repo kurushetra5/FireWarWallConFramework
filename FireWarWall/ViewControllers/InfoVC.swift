@@ -29,6 +29,7 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
              ComandsRuner.run(comand: whois.comand()) { (result) in
                 print(result)
+                self.updateViewWith(data:result.dataArray)
             }
             
            
@@ -38,6 +39,7 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
             ComandsRuner.run(comand: nsLookup.comand()) { (result) in
                 print(result)
+                self.updateViewWith(data:result.dataArray)
             }
             
         case 2:
@@ -49,6 +51,7 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
             ComandsRuner.run(comand: traceRoute.comand()) { (result) in
                 print(result)
+                self.updateViewWith(data:result.dataArray)
             }
         case 4:
             print("Ping falta")
@@ -65,6 +68,7 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
             ComandsRuner.run(comand: netStat.comand()) { (result) in
                 print(result)
+                self.updateViewWith(data:result.dataArray)
             }
             
         default:
@@ -90,6 +94,13 @@ class InfoVC: NSViewController,InfoComandsDelegate {
     }
     
     
+    //MARK: -------- Update View ---------------
+    
+    func updateViewWith(data:[String]) {
+        infoTextView.insert(array:data)
+    }
+    
+    
     
     //MARK: -------- Configuration  ---------------
     func setUpDelegates() {
@@ -103,6 +114,22 @@ class InfoVC: NSViewController,InfoComandsDelegate {
     
     //MARK: -------- Comands Delegate  ---------------
     func comandFinishWith(data:String) {
+        
         infoTextView.string = data
     }
 }
+
+
+extension NSTextView {
+    
+    func insert(array:[String]) {
+      let result:String = array.joined(separator:"\n")
+      self.string = result
+        
+    }
+    
+}
+
+
+
+
