@@ -25,9 +25,13 @@ class InfoVC: NSViewController,InfoComandsDelegate {
         case 0:
             print("Whois")
             
-            let  whois:NetInfoComands = .whois(ip:"8.8.8.8")
+//            let  whois:NetInfoComands = .whois(ip:"8.8.8.8")
             
-             ComandsRuner.run(comand: whois.comand()) { (result) in
+            let genericPraser:PraserType =  .generic
+            let comand:Comand = GenericComand(name:"generic", praser:genericPraser.praserToUse(),taskPath:"/bin/ls", taskArgs: ["-a"])
+            
+            
+             ComandsRuner.run(comand: comand ) { (result) in
                 print(result)
                 self.updateViewWith(data:result.dataArray)
             }
@@ -35,9 +39,12 @@ class InfoVC: NSViewController,InfoComandsDelegate {
            
         case 1:
             print("NSLookUP")
-            let  nsLookup:NetInfoComands = .nsLookup(ip:"8.8.8.8")
+//            let  nsLookup:NetInfoComands = .nsLookup(ip:"8.8.8.8")
             
-            ComandsRuner.run(comand: nsLookup.comand()) { (result) in
+            let genericPraser:PraserType =  .generic
+            let lookup:Comand = NsLookup(withIp:"8.8.8.8", name: "nslookup", praser: genericPraser.praserToUse())
+            
+            ComandsRuner.run(comand:lookup ) { (result) in
                 print(result)
                 self.updateViewWith(data:result.dataArray)
             }

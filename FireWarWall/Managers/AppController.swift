@@ -94,8 +94,9 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         
         //        let nsLookup:NetInfoComands = .nsLookup(ip: "8.8.8.8")
-        
-        ComandsRuner.run(comand:ls.comand()) { (comandResult) in
+        let comand:Comand = GenericComand(name:"generic", praser:genericPraser.praserToUse(),taskPath:"/bin/ls", taskArgs: ["-a"])
+            
+        ComandsRuner.run(comand:comand) { (comandResult) in
             var result:PraserResult!
             result = comandResult as PraserResult
             
@@ -135,6 +136,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
 
+        
         ComandsRuner.runForEver(comand:fireWallState.comand()) { (result) in
             print(result)
 //            self.infoComandsDelegate?.comandFinishWith(data:result)
