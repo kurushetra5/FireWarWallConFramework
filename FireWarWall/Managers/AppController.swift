@@ -160,7 +160,8 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     }
     
     public func  fireWallStateOff() {
-        ComandsRuner.stopForEver(comand:nil)
+        
+        ComandsRuner.stopForEver(comand:"fireWallState")
     }
     
     public func  startFireWall() {
