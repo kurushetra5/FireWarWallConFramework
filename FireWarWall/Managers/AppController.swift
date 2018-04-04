@@ -103,10 +103,6 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
             print(result.dataString)
             
         }
-        
-        
-        
-        
     }
     
     
