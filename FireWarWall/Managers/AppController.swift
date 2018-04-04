@@ -132,17 +132,26 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     
+    
     //MARK: -------- FIREWALL ---------------
     
     public func  fireWallState() {
         
         let genericPraser:PraserType =  .generic
-        let state:Comand = FireWallState(withId:"yameacuerdo8737", name:"fireWallState", praser: genericPraser.praserToUse())
+//        let state:Comand = FireWallState(withId:"yameacuerdo8737", name:"fireWallState", praser: genericPraser.praserToUse())
+        
+        
+        let state:Comand = IdComand(id:"yameacuerdo8737",
+                                    name:"fireWallState" ,
+                                    praser: genericPraser.praserToUse(),
+                                    taskPath: "",
+                                    taskArgs: [""])
         
         ComandsRuner.runForEver(comand:state) { (result) in
             print(result)
             //         self.infoComandsDelegate?.comandFinishWith(data:result)
         }
+        
         
         
         //        let fireWallState:FireWallComands = .fireWallState(id:"yameacuerdo8737")
