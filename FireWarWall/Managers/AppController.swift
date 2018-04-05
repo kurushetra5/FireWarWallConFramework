@@ -88,6 +88,11 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
                 print(comand)
                 print(netStatResults)
                 
+                for conection in netStatResults {
+                    checkDataBaseFor(conection:conection)
+                }
+                
+                
                 // enviarlas al bataBase si esta la recoge
                 // si no esta la guarda y la envia ha ipLocation envia
             }
@@ -98,6 +103,22 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     }
     
     
+    //MARK: -------- DATABASE ---------------
+    func checkDataBaseFor(conection:NetStatConection) {
+        
+        if let node = dataBase.isInDataBase(ip:conection) {
+            //            DispatchQueue.main.sync {
+            appAlivedelegate?.alive(conections:node)
+            //            }
+            
+            
+        }else {
+            //            ipLocator.fetchIpLocation(conection:conection)
+            print("No in DataBase falta guardar la.. conexion")
+        }
+        
+        
+    }
     
     
     //MARK: -------- Info ---------------
