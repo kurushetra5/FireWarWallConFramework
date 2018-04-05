@@ -33,7 +33,10 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
              ComandsRuner.run(comand: comand ) { (result) in
                 print(result)
-                self.updateViewWith(data:result.dataArray)
+                if let comandResult:[String] = result as? [String]  {
+                    self.updateViewWith(data:comandResult)
+                }
+                
             }
             
            
@@ -46,7 +49,10 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
             ComandsRuner.run(comand:lookup ) { (result) in
                 print(result)
-                self.updateViewWith(data:result.dataArray)
+                if let comandResult:[String] = result as? [String]  {
+                    self.updateViewWith(data:comandResult)
+                }
+                
             }
             
         case 2:

@@ -77,10 +77,24 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     //MARK: -------- ComandsRunerDelegate Delegates ---------------
-    func finish(comand: String, withResult result: [String]) {
-        print("-------------------")
-        print(comand)
-        print(result)
+    func finish(comand: String, withResult result:Any) {
+        
+        
+        switch comand {
+        case "netstat":
+            if let netStatResults:[NetStatConection] = result as?  [NetStatConection] {
+                
+                print("-------------------")
+                print(comand)
+                print(netStatResults)
+                
+                // enviarlas al bataBase si esta la recoge
+                // si no esta la guarda y la envia ha ipLocation envia
+            }
+        default:
+            print("falta")
+        }
+        
     }
     
     
@@ -93,14 +107,15 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         let genericPraser:PraserType =  .generic
         let comand:Comand = GenericComand(name:"generic", praser:genericPraser.praserToUse(),taskPath:"/bin/ls", taskArgs: ["-a"])
         
-        ComandsRuner.run(comand:comand) { (comandResult) in
-            var result:PraserResult!
-            result = comandResult as PraserResult
+        ComandsRuner.run(comand:comand) { (result) in
+//            var result:PraserResult!
+//            result = comandResult as PraserResult
             
-            print(comandResult)
-            print(result.dataType)
-            print(result.dataArray)
-            print(result.dataString)
+            if let comandResult:[String] = result as? [String]  {
+                print(comandResult)
+            }
+            
+            
             
         }
     }
@@ -112,15 +127,13 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     //MARK: -------- Conections ---------------
     public func showConections()  {
         
+        let netStatPraser:NetStatPraser = NetStatPraser()
+        let netStat:Comand = KUNetStat(praser:netStatPraser , name: "netstat")
         
-        let genericPraser:PraserType =  .generic
-        let netStat:Comand = NetStat(praser:genericPraser.praserToUse() , name:"netstat")
-        
-        ComandsRuner.runForEver(comand:netStat) { (result) in  //FIXME: result debe de ser any y cast to lo que le haya puesto en el praser
+        ComandsRuner.runForEver(comand:netStat) { (result) in //FIXME: no necesita callBack..
             print(result)
-            //TODO: recoger netstatConections 
-            // enviarlas al bataBase si esta la recoge
-            // si no esta la guarda y la envia ha ipLocation envia
+            
+            
             
             
 //         self.infoComandsDelegate?.comandFinishWith(data:result)

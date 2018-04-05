@@ -11,7 +11,7 @@ import KUTaskFramework
 
 
 public protocol Prasables  {
-    func prase(comandResult:[String]) -> PraserResults //FIXME: Hacer publica
+    func prase(comandResult:[String]) -> Any //FIXME: Hacer publica
 }
 
 public  protocol PraserResultables  {
@@ -31,13 +31,15 @@ public struct PraserResults:PraserResultables {
 
 
 
-struct NetStatPraser:Prasables  {
-    func prase(comandResult: [String]) -> PraserResults { //FIXME :devolver Any
-        
-        
-        let result:PraserResults = PraserResults(dataType:"array", dataString:"nil", dataArray:["comandResult"])
-        return result
+struct NetStatPraser:Prasable  {
+    
+    
+    
+    
+    func prase(comandResult: [String]) -> Any { //FIXME :devolver Any
+        return  findNetStatIps(inText:comandResult)
     }
+    
     
     
     func findNetStatIps(inText:[String]) -> [NetStatConection] { //TODO: refractor facil y bonito
