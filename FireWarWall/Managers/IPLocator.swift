@@ -14,7 +14,13 @@ protocol IPLocatorDelegate {
 //    func ipLocationReady(ipLocation:NetStatConection)
 }
 
-
+struct NetStatConection  {
+    
+    var ipLocation:IPLocation!
+    var sourceIp:String = ""
+    var destinationIp:String = ""
+    
+}
 
 struct  IPLocation:Codable {
     var query:String

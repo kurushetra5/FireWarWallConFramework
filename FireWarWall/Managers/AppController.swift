@@ -116,8 +116,13 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         let genericPraser:PraserType =  .generic
         let netStat:Comand = NetStat(praser:genericPraser.praserToUse() , name:"netstat")
         
-        ComandsRuner.runForEver(comand:netStat) { (result) in
+        ComandsRuner.runForEver(comand:netStat) { (result) in  //FIXME: result debe de ser any y cast to lo que le haya puesto en el praser
             print(result)
+            //TODO: recoger netstatConections 
+            // enviarlas al bataBase si esta la recoge
+            // si no esta la guarda y la envia ha ipLocation envia
+            
+            
 //         self.infoComandsDelegate?.comandFinishWith(data:result)
         }
         

@@ -22,6 +22,7 @@
 		61D36ED2203106EF00819FE1 /* ConectionNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */; };
 		61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */; };
 		61D79AC52034E0CD00CE226B /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D79AC42034E0CD00CE226B /* AppController.swift */; };
+		61EB7F192075A2B1004EFA33 /* NetStatPraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EB7F182075A2B1004EFA33 /* NetStatPraser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +57,7 @@
 		61D36ED0203106EF00819FE1 /* ConectionNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataClass.swift"; sourceTree = "<group>"; };
 		61D36ED1203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConectionNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		61D79AC42034E0CD00CE226B /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		61EB7F182075A2B1004EFA33 /* NetStatPraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStatPraser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				61937D44202B2A98007BA376 /* Assets.xcassets */,
 				61937D49202B2A98007BA376 /* Info.plist */,
 				61937D4A202B2A98007BA376 /* FireWarWall.entitlements */,
+				61EB7F182075A2B1004EFA33 /* NetStatPraser.swift */,
 			);
 			path = FireWarWall;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */,
 				616FF59B2050A88400681E63 /* InfoComandsManager.swift in Sources */,
 				61C4DEC62032508A00727032 /* IPLocator.swift in Sources */,
+				61EB7F192075A2B1004EFA33 /* NetStatPraser.swift in Sources */,
 				61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */,
 				61D79AC52034E0CD00CE226B /* AppController.swift in Sources */,
 				61D36ED3203106EF00819FE1 /* ConectionNode+CoreDataProperties.swift in Sources */,
