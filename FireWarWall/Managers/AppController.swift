@@ -158,10 +158,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         let netStatPraser:NetStatPraser = NetStatPraser()
         let netStat:Comand = KUNetStat(praser:netStatPraser , name: "netstat")
         
-        ComandsRuner.runForEver(comand:netStat) { (result) in //FIXME: no necesita callBack..
-            print(result)
-            //         self.infoComandsDelegate?.comandFinishWith(data:result)
-        }
+        ComandsRuner.runForEver(comand:netStat)
     }
     
     
@@ -189,10 +186,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
                                     taskPath: "",
                                     taskArgs: [""])
         
-        ComandsRuner.runForEver(comand:state) { (result) in
-            print(result)
-            //         self.infoComandsDelegate?.comandFinishWith(data:result)
-        }
+        ComandsRuner.runForEver(comand:state)
         
         
         
