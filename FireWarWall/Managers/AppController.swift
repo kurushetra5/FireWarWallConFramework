@@ -103,6 +103,8 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     }
     
     
+    
+    
     //MARK: -------- DATABASE ---------------
     func checkDataBaseFor(conection:NetStatConection) {
         
@@ -112,13 +114,16 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
             //            }
             
             
-        }else {
+        } else {
             //            ipLocator.fetchIpLocation(conection:conection)
+            
             print("No in DataBase falta guardar la.. conexion")
         }
         
         
     }
+    
+    
     
     
     //MARK: -------- Info ---------------
