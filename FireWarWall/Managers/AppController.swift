@@ -108,6 +108,8 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     //MARK: -------- DATABASE ---------------
     func checkDataBaseFor(conection:NetStatConection) {
         
+         print(dataBase.dataBase.count)
+        
         if let node = dataBase.isInDataBase(ip:conection) {
             //            DispatchQueue.main.sync {
             appAlivedelegate?.alive(conections:node) //guardar datos
@@ -158,18 +160,14 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         ComandsRuner.runForEver(comand:netStat) { (result) in //FIXME: no necesita callBack..
             print(result)
-            
-            
-            
-            
-//         self.infoComandsDelegate?.comandFinishWith(data:result)
+            //         self.infoComandsDelegate?.comandFinishWith(data:result)
         }
-        
-        
     }
     
+    
+    
     public func showConectionsOff()  {
-        //        comandsManager.showConectionsOff()
+       ComandsRuner.stopForEver(comand:"netstat")
     }
     
     

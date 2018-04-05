@@ -83,13 +83,6 @@ class ViewController: NSViewController , NSTableViewDelegate,NSTableViewDataSour
     
     
   
-    
-    
-    
-    
-    
-    
-    
     //MARK:---------------------- TABLE_VIEW Delegate --------------------
     func numberOfRows(in tableView: NSTableView) -> Int {
         
