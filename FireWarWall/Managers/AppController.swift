@@ -110,7 +110,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         if let node = dataBase.isInDataBase(ip:conection) {
             //            DispatchQueue.main.sync {
-            appAlivedelegate?.alive(conections:node)
+            appAlivedelegate?.alive(conections:node) //guardar datos
             //            }
             
             
