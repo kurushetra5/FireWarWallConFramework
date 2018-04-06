@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61240CC52076EF87000A246A /* KUFireWallComands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61240CC42076EF87000A246A /* KUFireWallComands.swift */; };
+		61240CC72076F19A000A246A /* FireWallStatePraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61240CC62076F19A000A246A /* FireWallStatePraser.swift */; };
 		6151B526206F24F300FF0099 /* KUTaskFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6151B527206F24F300FF0099 /* KUTaskFramework.framework */; };
 		6151B528206F251100FF0099 /* KUTaskFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6151B527206F24F300FF0099 /* KUTaskFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		616FF5992050A22900681E63 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616FF5982050A22900681E63 /* InfoVC.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		61240CC42076EF87000A246A /* KUFireWallComands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUFireWallComands.swift; sourceTree = "<group>"; };
+		61240CC62076F19A000A246A /* FireWallStatePraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWallStatePraser.swift; sourceTree = "<group>"; };
 		6151B527206F24F300FF0099 /* KUTaskFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KUTaskFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		616FF5982050A22900681E63 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		616FF59A2050A88400681E63 /* InfoComandsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoComandsManager.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				61937D4A202B2A98007BA376 /* FireWarWall.entitlements */,
 				61EB7F182075A2B1004EFA33 /* NetStatPraser.swift */,
 				61EB7F1A2075C10D004EFA33 /* KUNetComands.swift */,
+				61240CC42076EF87000A246A /* KUFireWallComands.swift */,
+				61240CC62076F19A000A246A /* FireWallStatePraser.swift */,
 			);
 			path = FireWarWall;
 			sourceTree = "<group>";
@@ -229,8 +235,10 @@
 				616FF5992050A22900681E63 /* InfoVC.swift in Sources */,
 				61EB7F1B2075C10D004EFA33 /* KUNetComands.swift in Sources */,
 				61937D3E202B2A98007BA376 /* AppDelegate.swift in Sources */,
+				61240CC72076F19A000A246A /* FireWallStatePraser.swift in Sources */,
 				616FF59B2050A88400681E63 /* InfoComandsManager.swift in Sources */,
 				61C4DEC62032508A00727032 /* IPLocator.swift in Sources */,
+				61240CC52076EF87000A246A /* KUFireWallComands.swift in Sources */,
 				61EB7F192075A2B1004EFA33 /* NetStatPraser.swift in Sources */,
 				61D36ECF2031062600819FE1 /* FireWarWall.xcdatamodeld in Sources */,
 				61D79AC52034E0CD00CE226B /* AppController.swift in Sources */,

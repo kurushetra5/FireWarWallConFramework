@@ -96,6 +96,10 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
                 // enviarlas al bataBase si esta la recoge
                 // si no esta la guarda y la envia ha ipLocation envia
             }
+            
+         case "fireWallState":
+            print(result)
+            
         default:
             print("falta")
         }
@@ -176,17 +180,20 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     public func  fireWallState() {
         
-        let genericPraser:PraserType =  .generic
+//        let genericPraser:PraserType =  .generic
 //        let state:Comand = FireWallState(withId:"yameacuerdo8737", name:"fireWallState", praser: genericPraser.praserToUse())
         
         
-        let state:Comand = IdComand(id:"yameacuerdo8737",
-                                    name:"fireWallState" ,
-                                    praser: genericPraser.praserToUse(),
-                                    taskPath: "",
-                                    taskArgs: [""])
+//        let state:Comand = IdComand(id:"yameacuerdo8737",
+//                                    name:"fireWallState" ,
+//                                    praser: genericPraser.praserToUse(),
+//                                    taskPath: "",
+//                                    taskArgs: [""])
         
-        ComandsRuner.runForEver(comand:state)
+        
+        let  fireWallStatePraser:FireWallStatePraser = FireWallStatePraser()
+        let fireWallState:Comand = KUFireWallState(withId:"yameacuerdo8737", name: "fireWallState", praser:fireWallStatePraser)
+        ComandsRuner.runForEver(comand:fireWallState)
         
         
         
