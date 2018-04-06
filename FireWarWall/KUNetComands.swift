@@ -35,6 +35,8 @@ public struct KUNetStat:Comand   {
 
 
 struct KUTcpDumpCom:ComandWithIP {
+    
+    
     var praser: Prasable
     
     
@@ -49,7 +51,11 @@ struct KUTcpDumpCom:ComandWithIP {
         self.name = name
         self.praser = praser
         self.ip = withIp
-        //        addIp() //FIXME: Este comando no esta claro
+        addIp()
+    }
+    
+    mutating func addIp() {
+        
     }
     
     mutating func block(ip:String) {

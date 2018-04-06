@@ -102,6 +102,9 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
             
         case "generic":
             print(result)
+            
+        case "whois":
+            print(result)
         default:
             print("falta")
         }
@@ -138,20 +141,20 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     public func runInfo(comand:Comand) {
         
         
-        ComandsRuner.runForEver(comand:comand)
+//        ComandsRuner.runForEver(comand:comand)
         
         
-//        ComandsRuner.run(comand:comand) { (result) in
-////            var result:PraserResult!
-////            result = comandResult as PraserResult
-//
-//            if let comandResult:[String] = result as? [String]  {
-//                print(comandResult)
-//            }
+        ComandsRuner.run(comand:comand) { (result) in
+//            var result:PraserResult!
+//            result = comandResult as PraserResult
+
+            if let comandResult:[String] = result as? [String]  {
+                print(comandResult)
+            }
         
             
             
-//        }
+        }
     }
     
     

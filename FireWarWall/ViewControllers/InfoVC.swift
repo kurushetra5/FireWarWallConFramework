@@ -27,14 +27,18 @@ class InfoVC: NSViewController,InfoComandsDelegate {
             
             let genericPraser:KUGenericPraser = KUGenericPraser()
             let comand:Comand = GenericComand(name:"generic", praser:genericPraser ,taskPath:"/bin/ls", taskArgs: ["-a"])
-            appController.runInfo(comand:comand)
+//            appController.runInfo(comand:comand)
             
             
+            let WhoisPraser:KUGenericPraser = KUGenericPraser()
+            let whois:KUWhois = KUWhois(withIp:"8.8.8.8", name:"whois", praser:WhoisPraser)
+            appController.runInfo(comand:whois)
             
-           
+            
         case 1:
             print("NSLookUP")
  
+            
             
         case 2:
             print("Dig falta")
