@@ -166,7 +166,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         let netStatPraser:NetStatPraser = NetStatPraser()
         let netStat:Comand = KUNetStat(praser:netStatPraser , name: "netstat")
-        ComandsRuner.runForEver(comand:netStat)
+        ComandsRuner.runForEver(comand:netStat, interval:0.1)
     }
     
     
@@ -197,7 +197,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         let  fireWallStatePraser:FireWallStatePraser = FireWallStatePraser()
         let fireWallState:Comand = KUFireWallState(withId:"yameacuerdo8737", name: "fireWallState", praser:fireWallStatePraser)
-        ComandsRuner.runForEver(comand:fireWallState)
+        ComandsRuner.runForEver(comand:fireWallState, interval:1.0)
         
         
         
