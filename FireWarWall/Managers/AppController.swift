@@ -100,6 +100,8 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
          case "fireWallState":
             print(result)
             
+        case "generic":
+            print(result)
         default:
             print("falta")
         }
@@ -133,23 +135,23 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     //MARK: -------- Info ---------------
-    public func runInfo(comand:String, args:String) {
+    public func runInfo(comand:Comand) {
         
         
-        let genericPraser:PraserType =  .generic
-        let comand:Comand = GenericComand(name:"generic", praser:genericPraser.praserToUse(),taskPath:"/bin/ls", taskArgs: ["-a"])
+        ComandsRuner.runForEver(comand:comand)
         
-        ComandsRuner.run(comand:comand) { (result) in
-//            var result:PraserResult!
-//            result = comandResult as PraserResult
+        
+//        ComandsRuner.run(comand:comand) { (result) in
+////            var result:PraserResult!
+////            result = comandResult as PraserResult
+//
+//            if let comandResult:[String] = result as? [String]  {
+//                print(comandResult)
+//            }
+        
             
-            if let comandResult:[String] = result as? [String]  {
-                print(comandResult)
-            }
             
-            
-            
-        }
+//        }
     }
     
     
@@ -161,7 +163,6 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         let netStatPraser:NetStatPraser = NetStatPraser()
         let netStat:Comand = KUNetStat(praser:netStatPraser , name: "netstat")
-        
         ComandsRuner.runForEver(comand:netStat)
     }
     

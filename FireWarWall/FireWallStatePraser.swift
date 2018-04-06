@@ -26,3 +26,11 @@ struct FireWallStatePraser:Prasable   {
          return state
     }
 }
+
+struct KUGenericPraser:Prasable   {
+    
+    public func prase(comandResult:[String]) -> Any {
+        return comandResult
+    }
+    
+}
