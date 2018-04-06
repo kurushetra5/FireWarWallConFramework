@@ -77,6 +77,12 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     
     //MARK: -------- ComandsRunerDelegate Delegates ---------------
+    
+    func finishWith(error:Error) {
+        
+    }
+    
+    
     func finish(comand: String, withResult result:Any) {
         
         
