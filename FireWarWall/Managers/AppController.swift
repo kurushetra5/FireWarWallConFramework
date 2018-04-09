@@ -34,7 +34,9 @@ protocol InfoComandsDelegate {
 
 
 
-final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDelegate  {
+final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDelegate ,ComandsContinouslyDelegate {
+    
+    
     
     
     
@@ -64,7 +66,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     
     //MARK: -------- Configuration  ---------------
     func setUpDelegates() {
-        
+        ComandsRuner.comandsContinouslyDelegate = self
         ComandsRuner.comandsRunerDelegate = self
         ipLocator.locatorDelegate = self
         dataBase.delegate = self
@@ -72,11 +74,18 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     }
     
     
+    //MARK: -------- ComandsContinouslyDelegate Delegates ---------------
+    func newDataFromContinously(comand: String, withResult newData: Any) {
+        var newData:[String] = newData as! [String]
+        
+        print(comand)
+        
+        
+    }
     
     
     
     
-    //MARK: -------- ComandsRunerDelegate Delegates ---------------
     
     func finishWith(error:Error) {
         
@@ -117,6 +126,12 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
     }
     
+    
+    func runContinously(comand:Comand) {
+        
+//        ComandsRuner.runForReadingContinously(comand:comand)
+         ComandsRuner.runForReadContinously(comand:comand)
+    }
     
     
     
@@ -172,7 +187,7 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
         
         let netStatPraser:NetStatPraser = NetStatPraser()
         let netStat:Comand = KUNetStat(praser:netStatPraser , name: "netstat")
-        ComandsRuner.runForEver(comand:netStat, interval:0.1)
+        ComandsRuner.runForEver(comand:netStat, interval:2.0)
     }
     
     

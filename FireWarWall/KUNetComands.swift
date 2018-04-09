@@ -34,6 +34,19 @@ public struct KUNetStat:Comand   {
 
 
 
+struct  KUPingListener:Comand    {
+    
+    var praser: Prasable = KUGenericPraser()
+    var taskPath: String = "/bin/sh"
+    var taskArgs: [String] =  ["-c" , "echo yameacuerdo8737 | sudo -S tcpdump -i en4"] //TODO: puede que el comando se pueda correr sin sudo..
+    var name: String = "chatListenerTcpDump"
+}
+
+
+
+
+
+
 struct KUTcpDumpCom:ComandWithIP {
     
     
@@ -63,6 +76,8 @@ struct KUTcpDumpCom:ComandWithIP {
         self.taskArgs.append(notIpArgs)
     }
 }
+
+
 
 
 
