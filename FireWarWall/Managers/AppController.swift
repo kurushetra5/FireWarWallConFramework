@@ -74,9 +74,67 @@ final class AppController:IPLocatorDelegate ,dataBaseDelegate ,ComandsRunerDeleg
     }
     
     
+    
     //MARK: -------- ComandsContinouslyDelegate Delegates ---------------
     func newDataFromContinously(comand: String, withResult newData: Any) {
-        var newData:[String] = newData as! [String]
+        
+      let newData:[Dictionary<String,String>] = newData as! [Dictionary<String,String>]
+      var ordered:[Dictionary<String,String>] = [Dictionary<String,String>]()
+      
+        
+        print(newData.count)
+       
+        
+        for ping in newData {
+//            var seq = ping["seq"] as! String
+            var ttl = ping["ttl"] as! String
+            var len = ping["lenght"] as! String
+//             print(seq)
+            
+            if ping["flag"] == "DF" {
+//               print(seq)
+                print(ttl)
+                print(len)
+                
+            }
+            
+//            ordered["seq"]
+            
+//            if ping["seq"] == "0" {
+//               print("seq ------- 0")
+//            }
+        }
+        
+        
+        
+        
+        // -p pattern
+//        You may specify up to 16 ``pad'' bytes to fill out the packet you send.  This is useful for diag-
+//        nosing data-dependent problems in a network.  For example, ``-p ff'' will cause the sent packet
+//        to be filled with all ones.
+//"echo nomeacuerdo87378737 | sudo -S tcpdump -nnv -i en0 icmp -x  >ping7.txt &")
+        // -W timpo de espera muy util para filtrar
+        //  -n  Numeric output only.  No attempt will be made to lookup symbolic names for host addresses.
+        // -o manda uno y sale
+//        var maskICMP = ""   // -M mask | time
+//        var preLoad = "" //  -l preload
+//        var time = "" // -i wait
+//        var ttl = "" // -m ttl 1-255
+//        var lenght1 = ""
+//        var seq = "" // -c count
+//        var lenght2 = ""
+//        var flags = "" // -D      Set the Don't Fragment bit.
+//        var size = "" // -G sweepmaxsize -h sweepincrsize  -g sweepminsize
+        
+        
+//        var line = "01:19:30.138209 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto ICMP (1), length 84, bad cksum 0 (->b48e)!)"
+        
+        
+        
+        //        192.168.2.100 > 192.168.2.102: ICMP echo reply, id 4809, seq 1, length 64
+        
+        
+        
         
         print(comand)
         
